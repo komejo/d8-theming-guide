@@ -136,7 +136,6 @@ Twig is a completely new theme/template system. This means all of the `theme_*` 
 #### Disadvantage
 
 - Although the syntax is very easy to read and understand, it's a new syntax you have to learn before getting started.
-- ...
 
 ## The themes directory
 
@@ -202,21 +201,21 @@ Otherwise you can manually add a screenshot with the following line:
 
 	screenshot: otherfilename.png
 	
-So, the filename of a screenshot does not have to be `screenshot.png`, as long as it is defined in the *info.yml* file.
+So, the filename for a screenshot does not have to be `screenshot.png`, as long as it is defined in the *info.yml* file.
 
 #### Adding stylesheets
 
-It's of course important to know how to add stylesheets to our theme. Let's add a css file called `styles.css` (`/css/styles.css`) to our theme.
+It's of course important to know how to add stylesheets to your theme. Let's add a css file called `styles.css` (that lives inside the `css` directory: `/css/styles.css`) to our theme.
 
 	# Adding styles.css to our theme.
 	stlesheets:
 		all:
 			- css/styles.css
 			
-> Let's have a look as how the same thing could be achieved in Drupal 7:  
+> In Drupal 7, this could be achieved by adding the following line:  
 > `stylesheets[all][] = css/style.css`
 			
-The css file is now added. The `all` keyword stands for the media tag inside the html `link` element that is used to add stylesheets. 
+The css file is now added. The `all` keyword stands for the media tag inside the html `link` element that is used to add stylesheets:
 
 	<link rel="stylesheet" href="[stylesheet]" media="all" />
 	
@@ -228,7 +227,8 @@ So ... now that you know this, it's very easy to add a print stylesheet to our t
 			- css/print.css
 					
 Inside the html:
-`<link rel="stylesheet" href="[stylesheet]" media="print" />`
+
+	<link rel="stylesheet" href="[stylesheet]" media="print" />
 	
 #### Overriding stylesheets
 
@@ -240,7 +240,7 @@ In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this cha
  
 #### Removing stylesheets
 
-Alternatively, we can completely remove this file. 
+Alternatively, we can also completely remove this css file. 
 
     # Remove a CSS file:​
     stylesheets-remove:
@@ -257,7 +257,6 @@ Regions can be defined using the `regions` tag. Here is an example where 3 regio
 		footer: 'Footer'
 
 ### Libraries and Scripts
-
 
 > Drupal 8 doesn't load any additional scripts. This means that by default [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it was [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
 
