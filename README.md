@@ -4,9 +4,8 @@ Hi, my name is Sander. I'm a web developer from Belgium.
 
 If you ever want to get in touch, feel free to contact me.
 
-- [Drupal.org](https://www.drupal.org/u/sqndr).
-- [Twitter](http://twitter.com/sqndr).
-- [Twitter](http://twitter.com/sqndr).
+- [Drupal.org](https://www.drupal.org/u/sqndr)
+- [Twitter](http://twitter.com/sqndr)
 
 ![With more than 200 new features and improvements, the upcoming release of the world’s leading open source web content management platform will win you over.](https://www.drupal.org/sites/all/modules/drupalorg/drupalorg/images/d8.svg)
 
@@ -53,9 +52,9 @@ You might remember these three themes from Drupal 7. But wait, there's more ...
 
 ### Bartik
 
-*Bartik* was introduced in Drupal 7 as a new, clean and simple theme. The theme has some new cool features in Drupal 8 and is also completely responsive.
+*Bartik* was introduced in Drupal 7 as a new, clean and simple theme. The theme has some new cool features in Drupal 8 and is also completely responsive. 
 
-[@todo: add screenshot]
+![Bartik screenshot](https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/bartik.png)
 
 ### Seven
 
@@ -65,7 +64,7 @@ You might remember these three themes from Drupal 7. But wait, there's more ...
 
 > A sad thing about the style guide was that the font (Source Sans) could not make it into core [due to licence issues](https://www.drupal.org/node/1986082). The default font family used in the Seven (and Bartik theme) is **Lucida Grande**. Sadly the style guide never got an update. The licencing issue is still a thing. If you want to get involed, jump over to [https://www.drupal.org/node/2010902](https://www.drupal.org/node/2010902)
 
-[@todo: add screenshot]
+![Seven screenshot](https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/seven.png)
 
 ### Stark
 
@@ -73,7 +72,7 @@ You might remember these three themes from Drupal 7. But wait, there's more ...
 - you can code against Stark when writing CSS for modules
 - as a theme developer, you can check against Stark, to see if a layout issue comes from the theme or another module.
 
-[@todo: add screenshot]
+![Stark screenshot](https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/stark.png)
 
 ### Classy
 
@@ -104,13 +103,13 @@ A theme engines (template engine, template processor or template parser) is a so
 
 ### Twig
 
-[This is the official change record](https://www.drupal.org/node/1831138).
+Twig is a completely new theme/template system. This means all of the `theme_*` functions and PHP Temmplate based `*.tpl.php` files have been completely replace in Drupal 8. Template files now have a new (Twig) extension, `*.html.twig`. 
 
-Twig is a completely new theme/template system. This means `theme_*` functions and PHP-based `*.tpl.php` files have been completely replace in D8. Template files use a new extension, `*.html.twig`.
+[This is the official change record](https://www.drupal.org/node/1831138).
 
 #### Advantages
 
-- Twig is more secure, due to the fact that only a number of tags can be used. In the previous PHPTemplate), it was possible for a template file to execute the following code:
+- Twig is more secure, due to the fact that only a number of tags can be used. In the previous PHPTemplate, it was possible for a template file to execute the following code:
 
 		<?php
 		db_query('DROP TABLE {users}');
