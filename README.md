@@ -21,6 +21,14 @@ Drupal 8 is going to be a huge change for the entire community. In order to get 
 
 Let's kick of with some major changes that you, as a Drupal themer, must be aware of. This is especially useful if you've been involved in Drupal 7 theming in the past.
 
+- The markup in Drupal 8 is now [HTML5](http://buytaert.net/html5-in-drupal-8). New tags like `header`, `nav`, `article` are used in core. 
+
+- [WAI-ARIA Roles](https://www.drupal.org/node/1179668) are added. There are a set of roles, states, and properties, which can be applied to markup to provide rich semantics, increasing accessibility and interoperability. Although WAI-ARIA properties were not valid in xhtml 1.0, they are valid in HTML5, and can therefore be applied in the markup of Drupal 8. By using the role attribute with an HTML element, authors can provide more information about the purpose of components on the page.
+
+- `<DIV ID="BAD-PRACTICE">...</DIV>` Drupal 8 now has 75% less ID's than the Drupal 7 CSS! 
+
+- [The CSS Structure](https://www.drupal.org/node/1887918) is based on SMACSS & BEM.
+
 - [Drupal is now about of the box responsive and mobile ready.](https://groups.drupal.org/mobile/drupal-8)  
 This is of course a huge deal. Drupal is now out-of-the-box mobile friendly. 
 
@@ -36,7 +44,7 @@ Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the
 - [An new, empty core theme](https://www.drupal.org/node/2289511)
 Read more on *classy*, a new core theme below. 
 
-[@todo: Add more changes?]
+![MortenDK appoves](http://mortendk.github.io/drupal8-twig-frankfurt-2014/images/cssfilename-approved.jpg)
 
 ## Drupal core themes
 
@@ -80,9 +88,12 @@ At DrupalCon Austin (2014) the need for a new core theme came up. Here's a brief
 
 > *Create a new core theme (code name "classy") that contains a copy of the all current core template files; this is for the "sensible 2/3" camp. And then modify all of the core/modules template files to contain minimal classes (only those needed for functionality); this would be for the "clean 1/3" camp. To ensure that Seven and Bartik continue to function properly, they should use "classy" as their base theme.*
 
+Classy will be a `base theme` which *Bartik* and *Seven* will extend from.
+
+
 ### Coding standards
 
-It's important to know and following the Drupal coding standards, especially when you want to get involved into Drupal core (theme) development. Yet, it's might be useful as well to following these standards in your own projects.
+It's important to know and follow the Drupal coding standards, especially when you want to get involved into Drupal core (theme) development. Yet, it's might be useful as well to follow these standards in your own projects.
 
 There are coding standards for css, javascript and the new Twig template engine:
 
@@ -92,14 +103,13 @@ There are coding standards for css, javascript and the new Twig template engine:
 
 ## Theme engines
 
-Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig** (woop, woop - awesome). 
+Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig**. 
 
 ### What is a theme engine?
 
 A theme engines (template engine, template processor or template parser) is a software components that **combines data with templates** from themes and shows the result - the final HTML - to the user.
 
 ![Template Engine image from Wikipedia](http://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TempEngGen015.svg/440px-TempEngGen015.svg.png)
-
 
 ### Twig
 
@@ -112,16 +122,16 @@ Twig is a completely new theme/template system. This means all of the `theme_*` 
 - Twig is more secure, due to the fact that only a number of tags can be used. In the previous PHPTemplate, it was possible for a template file to execute the following code:
 
 		<?php
-		db_query('DROP TABLE {users}');
+		  db_query('DROP TABLE {users}');
 		?>
 	
   This should of course not be the case.
 
-- There now is a clear separation between the *logic* and the *view*, resulting in no more PHP code inside your twig/html templates.
+- There now is a clear separation between the *logic* and the *view*. The means: no more PHP code inside your template files. 
 - The syntax is very easy to understand, making the code more readable as well. Also, many IDE's have syntax highlighting for `*.twig` files.
 - Template files are reusable, thanks to [Twig includes](http://twig.sensiolabs.org/doc/tags/include.html).
-- Twig is very well documented. Go ahead and [start reading the documentation here](http://twig.sensiolabs.org/documentation).
-- It's not only used in Drupal core, so it's no a Drupaly-thing.
+- Twig is very well documented. Go ahead and [start reading the official documentation here](http://twig.sensiolabs.org/documentation).
+- It's not only used in Drupal core, so it's no a Drupaly-thing. 
 
 #### Disadvantage
 
@@ -272,6 +282,14 @@ There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.dru
 ## Template files (Twig)
 
 Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a 'compiled' PHP template which it stores in a protected directory in sites/default/files/php_storage/... The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.
+
+### Twig debug
+
+An **awesome** new feature from the Twig engine is the debug tool. It allows you to trace where the template comes from. To enable Twig Debugging, all you have to do is set the `debug` variable in the `twig.config ` to `true`. Navigate to `sites/default/services.yml` to change the it:
+
+	parameters:
+  		twig.config:
+    		debug: false
 
 ### page.html.twig
 
