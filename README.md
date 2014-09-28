@@ -23,20 +23,19 @@ Let's kick of with some major changes that you, as a Drupal themer, must be awar
 
 - The markup in Drupal 8 is now [HTML5](http://buytaert.net/html5-in-drupal-8). New tags like `header`, `nav`, `article` are used in core. 
 
-- [WAI-ARIA Roles](https://www.drupal.org/node/1179668) are added. There are a set of roles, states, and properties, which can be applied to markup to provide rich semantics, increasing accessibility and interoperability. Although WAI-ARIA properties were not valid in xhtml 1.0, they are valid in HTML5, and can therefore be applied in the markup of Drupal 8. By using the role attribute with an HTML element, authors can provide more information about the purpose of components on the page.
+- [WAI-ARIA Roles](https://www.drupal.org/node/1179668) are added. They are a set of roles, states, and properties, which can be applied to markup to provide rich semantics, increasing accessibility and interoperability. Although WAI-ARIA properties were not valid in xhtml 1.0, they are valid in HTML5, and can therefore be applied in the markup of Drupal 8. By using the role attribute with an HTML element, authors can provide more information about the purpose of components on the page.
 
-- `<DIV ID="BAD-PRACTICE">...</DIV>` Drupal 8 now has 75% less ID's than the Drupal 7 CSS! 
+- `<DIV ID="BAD-PRACTICE">...</DIV>`. Drupal 8 now has 75% less ID's than the Drupal 7 CSS! **Kill all the #ids**!
 
-- [The CSS Structure](https://www.drupal.org/node/1887918) is based on SMACSS & BEM.
+- [The CSS (File) Structure](https://www.drupal.org/node/1887918) is based on SMACSS & BEM.
 
-- [Drupal is now about of the box responsive and mobile ready.](https://groups.drupal.org/mobile/drupal-8)  
-This is of course a huge deal. Drupal is now out-of-the-box mobile friendly. 
+- [Drupal is now of the box responsive and mobile ready.](https://groups.drupal.org/mobile/drupal-8)
 
-- [The default settings and config are changed to be fast and safe production values.](https://www.drupal.org/node/2259531)  
-As a themer, this is important because in a default Drupal 8 installation, CSS and JS aggregation is enabled. On your local development environment, you "might" want to disable this.
+- [The default settings and config are changed to be fast and safe production values.](https://www.drupal.org/node/2259531)
+This is important because in a default Drupal 8 installation, CSS and JS aggregation is enabled. On your local development environment, you "might" want to disable this. 
 
 - [A completely new theme/template system: Twig](https://www.drupal.org/node/1831138)
-Twig is a completely new theme/template system. This means `theme_*` functions and PHP-based `*.tpl.php` files have been completely replace in D8.
+Twig is a completely new theme/template system. This means the `theme_*` functions and PHP-based `*.tpl.php` files have been completely replace in D8.
 
 - [Drupal 8 does not support browsers that do not support SVG](https://www.drupal.org/node/2298227)
 Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the admin UI. No effort is made to cater for browsers that do not support SVG. This includes IE8 and below and Android Browser 2.3 and below.
@@ -48,7 +47,7 @@ Read more on *classy*, a new core theme below.
 
 ## Drupal core themes
 
-Drupal core themes live inside `core/themes`. Inside this folder we can find the three Drupal 8 core themes:  
+Drupal core themes live inside `core/themes`. Inside this folder we can find the three (at the moment) Drupal 8 core themes:
 
 - **bartik**: *A flexible, recolorable theme with many regions and a responsive, mobile-first layout.*
 - **seven**: *The default administration theme for Drupal 8 was designed with clean lines, simple blocks, and sans-serif font to emphasize the tools and tasks at hand.*
@@ -103,7 +102,7 @@ There are coding standards for css, javascript and the new Twig template engine:
 
 ## Theme engines
 
-Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig**. 
+Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig**. The default template engine from Drupal 7, PHPTemplate, does still exist. Altough it's not recommended to continue using the engine, it might be useful when you're migrating your Drupal 7 site to Drupal 8. 
 
 ### What is a theme engine?
 
@@ -113,7 +112,7 @@ A theme engines (template engine, template processor or template parser) is a so
 
 ### Twig
 
-Twig is a completely new theme/template system. This means all of the `theme_*` functions and PHP Temmplate based `*.tpl.php` files have been completely replace in Drupal 8. Template files now have a new (Twig) extension, `*.html.twig`. 
+Twig is a completely new theme/template system. All of the `theme_*` functions and PHPTemplate based `*.tpl.php` files have been completely replace in Drupal 8. Template files now have a new (Twig) extension, `*.html.twig`.
 
 [This is the official change record](https://www.drupal.org/node/1831138).
 
@@ -125,13 +124,13 @@ Twig is a completely new theme/template system. This means all of the `theme_*` 
 		  db_query('DROP TABLE {users}');
 		?>
 	
-  This should of course not be the case.
+  This should of course not be the case. In case you're wondering what it does: it removes the entire `users` table from your database. Not good, right?
 
 - There now is a clear separation between the *logic* and the *view*. The means: no more PHP code inside your template files. 
 - The syntax is very easy to understand, making the code more readable as well. Also, many IDE's have syntax highlighting for `*.twig` files.
 - Template files are reusable, thanks to [Twig includes](http://twig.sensiolabs.org/doc/tags/include.html).
 - Twig is very well documented. Go ahead and [start reading the official documentation here](http://twig.sensiolabs.org/documentation).
-- It's not only used in Drupal core, so it's no a Drupaly-thing. 
+- It's not only used in Drupal core, so it's no a Drupaly-thing.
 
 #### Disadvantage
 
@@ -139,30 +138,34 @@ Twig is a completely new theme/template system. This means all of the `theme_*` 
 
 ## The themes directory
 
-All right. Now is the time to get really excited. We're about to create a Drupal 8 theme. The question that raises is: where should this theme be located, where should I put the files?
+All right. Now is the time to get really excited. We're about to create a Drupal 8 theme! The question that raises is: where should this theme be located, where should I put the files?
 
-> If you're familiar with Drupal 7 theming, the first place for you to look at would be `drupal/sites/all/themes/{custom/}` (this was the place where all your custom themes lived in Drupal 7).
+> If you're familiar with Drupal 7 theming, the first place for you to look at would be `drupal/sites/all/themes/{custom/}` (the place where all your custom themes lived in Drupal 7).
 
-In Drupal 8, this location has changed. Custom and contrib themes now live in `drupal/themes/{custom}`. Also notice how custom and contrib modules now live inside `drupal/modules` (insted of drupal/sites/all/modules/).
+In Drupal 8, this location has changed. Custom and contrib themes now live in `drupal/themes`. Also notice that (custom and contrib) modules now live inside `drupal/modules` (insted of drupal/sites/all/modules/).
 
 > Did you notice {*custom*}? It's always a good practice to separate the contrib themes (the one's you've been downloading from d.o) and the ones you've written yourself. This can simply be done by creating two folders inside the `themes` directory:
 
 > `contrib`: for contrib themes  
-> `custom`: for custom themes  
+> `custom`: for custom themes
+
+### Create your custom theme directory
+
+Let's create an `example` directory inside `themes/custom`, resulting in `themes/custom/example`. Inside this direcoty, all the code for our custom theme will live.  
 
 ## Creating an info file
 
 ### A simple .info.yml file
 
-Again, if you're familiar with Drupal 7 theming, you're first idea might be to start with creating an `.info` file. In Drupal 8, `.info` files are replaced by `.info.yml` files ([read the change record](https://www.drupal.org/node/1935708)). These files are parsed using the Symphony YAML Component. This change also applies for modules and profiles. They both require a `.info.yml` now, instead of the old `.info` file.
+Again, if you're familiar with Drupal 7 theming, your first idea might be to start with creating an `.info` file. In Drupal 8, `.info` files are replaced by `.info.yml` files ([read the change record](https://www.drupal.org/node/1935708)). These files are parsed using the Symphony YAML Component. This change also applies for modules and installation profiles. They both require a `.info.yml` now, instead of the old `.info` file. Once you've created the file, it's time to add the write the first line of code.
 
 	name: Example Theme
 	
-Fairly simple. This is the name of your theme. It's the name that also appears on the *Appearance* page, where you can activate the name.
+Fairly simple. This is the name of your theme. It's the name that also appears on the *Appearance* page, where you can activate your theme.
 	
 	description: 'An example D8 theme.'
 
-A theme description, also displayed on the *Appearance* page.
+A theme description. This description is also displayed on the *Appearance* page.
 
 	package: Custom
 	
@@ -170,7 +173,7 @@ The package in which your theme lives.
 	
 	type: theme
 
-Since the `info.yml` files are used for themes, modules and profiles, this line lets Drupal know what it's dealing with.
+Since the `info.yml` files are used for besides themes also used for modules and profiles, this line lets Drupal know what it's dealing with.
 	
 	version: 1.0
 
@@ -178,7 +181,7 @@ The version of your theme.
 	
 	core: 8.x
 	
-The version of Drupal core the theme requires.
+The version of Drupal core the theme requires. 
 
 ##### *.info.yml
 
@@ -191,7 +194,7 @@ To wrap things up, this is our `.info.yml` file so far:
 	version: 1.0
 	core: 8.x
 	
-Save this as `{theme_name}.info.yml` inside the created custom theme directory (`themes/custom/example/example.info.yml`). The theme is now displayed in `admin/appearance`. You can now enable the theme. Hooray!
+Save this as `{theme_name}.info.yml` inside the created custom theme directory (eg. `themes/custom/example/example.info.yml`). Now navigate to `admin/appearance` and see your theme displayed. You can now even enable the theme. Hooray!
   		    
 #### Adding a screenshot
 
@@ -213,7 +216,8 @@ It's of course important to know how to add stylesheets to your theme. Let's add
 			- css/styles.css
 			
 > In Drupal 7, this could be achieved by adding the following line:  
-> `stylesheets[all][] = css/style.css`
+	
+	stylesheets[all][] = css/style.css
 			
 The css file is now added. The `all` keyword stands for the media tag inside the html `link` element that is used to add stylesheets:
 
@@ -232,7 +236,7 @@ Inside the html:
 	
 #### Overriding stylesheets
 
-In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this change record](https://www.drupal.org/node/2168417)). If you want to include a different version of normalize.css, you override this file:
+In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this change record](https://www.drupal.org/node/2168417)). If you want to include a different version of normalize.css, you can override this file:
 
     # Remove a CSS file:​
     stylesheets-override:
@@ -258,7 +262,7 @@ Regions can be defined using the `regions` tag. Here is an example where 3 regio
 
 ### Libraries and Scripts
 
-> Drupal 8 doesn't load any additional scripts. This means that by default [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it was [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
+> Drupal 8 doesn't load any additional scripts. This also means that by default [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it was [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
 
 Let's add a custom script to our theme. The script is location in the `js` folder inside our theme (`/js/custom-script.js`). Next, create a `*.libraries.yml` file. Let's call this `{theme}.libraries.yml`:
 	
@@ -274,13 +278,21 @@ Back in our `{theme}.info.yml` file, we add the following lines:
 	libraries:
 		- example/base
 
-This includes our libraries and their dependencies into our theme. In this example, the custom script as well as the jQuery library are now included in our theme. 
+This includes our "libraries" (the custom javascript) and the dependencies into our theme. In this example, the custom script as well as the jQuery library are now included in our theme. 
 
-There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.drupal.org/node/2273769)	
+There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.drupal.org/node/2273769).
+
+## Breakpoints
+
+[@todo] Document `{theme_name}.breakpoints.yml`
 
 ## Template files (Twig)
 
 Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a 'compiled' PHP template which it stores in a protected directory in sites/default/files/php_storage/... The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.
+
+### /templates folder
+
+[@todo:] Document the new folder, that contains all the templates files instead of all the `theme_`-functions.
 
 ### Twig debug
 
@@ -291,6 +303,8 @@ An **awesome** new feature from the Twig engine is the debug tool. It allows you
     		debug: false
 
 ### page.html.twig
+
+[@todo:] Document this template file.
 
 
 ## Headless Drupal
