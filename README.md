@@ -43,6 +43,8 @@ Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the
 - [An new, empty core theme](https://www.drupal.org/node/2289511)
 Read more on *classy*, a new core theme below. 
 
+- [CSS classes being moved from preprocess to Twig templates](https://www.drupal.org/node/2325067).
+
 ![MortenDK appoves](http://mortendk.github.io/drupal8-twig-frankfurt-2014/images/cssfilename-approved.jpg)
 
 ## Drupal core themes
@@ -89,7 +91,6 @@ At DrupalCon Austin (2014) the need for a new core theme came up. Here's a brief
 
 Classy will be a `base theme` which *Bartik* and *Seven* will extend from.
 
-
 ### Coding standards
 
 It's important to know and follow the Drupal coding standards, especially when you want to get involved into Drupal core (theme) development. Yet, it's might be useful as well to follow these standards in your own projects.
@@ -112,7 +113,7 @@ A theme engines (template engine, template processor or template parser) is a so
 
 ### Twig
 
-Twig is a completely new theme/template system. All of the `theme_*` functions and PHPTemplate based `*.tpl.php` files have been completely replace in Drupal 8. Template files now have a new (Twig) extension, `*.html.twig`.
+Twig is a modern template engine for PHP. All of the `theme_*` functions and PHPTemplate based `*.tpl.php` files have been completely replace in Drupal 8 by Twig template files. The template files now have a new (Twig) extension, `*.html.twig`.
 
 [This is the official change record](https://www.drupal.org/node/1831138).
 
@@ -129,6 +130,7 @@ Twig is a completely new theme/template system. All of the `theme_*` functions a
 - There now is a clear separation between the *logic* and the *view*. The means: no more PHP code inside your template files. 
 - The syntax is very easy to understand, making the code more readable as well. Also, many IDE's have syntax highlighting for `*.twig` files.
 - Template files are reusable, thanks to [Twig includes](http://twig.sensiolabs.org/doc/tags/include.html).
+- Debugging is much more easy. First of all, Twig outputs a helpful message with the filename and the line number whenever there is a syntax problem within a template. Secondly, you can turn on a Twig debug function. More on that later. 
 - Twig is very well documented. Go ahead and [start reading the official documentation here](http://twig.sensiolabs.org/documentation).
 - It's not only used in Drupal core, so it's no a Drupaly-thing.
 
@@ -284,7 +286,35 @@ There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.dru
 
 ## Breakpoints
 
-[@todo] Document `{theme_name}.breakpoints.yml`
+- [Breakpoint added to Drupal 8](https://www.drupal.org/node/1813914)
+
+> The Breakpoints module keeps track of the height, width, and resolution breakpoints where a responsive design needs to change in order to respond to different devices being used to view the site. The Breakpoints module standardizes the use of breakpoints, and enables modules and themes to expose or use each others' breakpoints.
+
+Both themes and modules can define breakpoints by creating a configuration file called `{name}.breakpoints.yml` where `{name}` is the name of your theme of module. 
+
+
+To get a good example, let look at `bartik.breakpoints.yml`:
+
+	bartik.mobile:
+	  label: mobile
+	  mediaQuery: '(min-width: 0px)'
+	  weight: 0
+	  multipliers:
+	    - 1x
+	bartik.narrow:
+	  label: narrow
+	  mediaQuery: 'all and (min-width: 560px) and (max-width: 850px)'
+	  weight: 1
+	  multipliers:
+	    - 1x
+	bartik.wide:
+	  label: wide
+	  mediaQuery: 'all and (min-width: 851px)'
+	  weight: 2
+	  multipliers:
+	    - 1x
+
+The file is very straight forward. First, you declair the name of the breakpoint group. 
 
 ## Template files (Twig)
 
