@@ -318,6 +318,8 @@ To get a good example, let look at `bartik.breakpoints.yml`:
 
 The file is very straight forward. First, you declair the name of the breakpoint group. 
 
+[@todo]
+
 ## Template files (Twig)
 
 Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a 'compiled' PHP template which it stores in a protected directory in sites/default/files/php_storage/... The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.
@@ -326,6 +328,8 @@ Twig is a PHP-based compiled templating language. When your web page renders, th
 
 [@todo:] Document the new folder, that contains all the templates files instead of all the `theme_`-functions.
 
+[@todo]
+
 ### Twig debug
 
 An **awesome** new feature from the Twig engine is the debug tool. It allows you to trace where the template comes from. To enable Twig Debugging, all you have to do is set the `debug` variable in the `twig.config ` to `true`. Navigate to `sites/default/services.yml` to change the it:
@@ -333,6 +337,8 @@ An **awesome** new feature from the Twig engine is the debug tool. It allows you
 	parameters:
   		twig.config:
     		debug: false
+    		
+[@todo]    		
 
 ### page.html.twig
 
@@ -342,3 +348,5 @@ An **awesome** new feature from the Twig engine is the debug tool. It allows you
 ## Headless Drupal
 
 A new trend, you might have heard by new, is **headless Drupal**.
+
+[@todo]
