@@ -286,6 +286,8 @@ There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.dru
 
 ## Breakpoints
 
+![https://www.drupal.org/files/project-images/breakpoints_group.png](https://www.drupal.org/files/project-images/breakpoints_group.png)
+
 - [Breakpoint added to Drupal 8](https://www.drupal.org/node/1813914)
 
 > The Breakpoints module keeps track of the height, width, and resolution breakpoints where a responsive design needs to change in order to respond to different devices being used to view the site. The Breakpoints module standardizes the use of breakpoints, and enables modules and themes to expose or use each others' breakpoints.
