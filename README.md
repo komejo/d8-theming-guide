@@ -2,13 +2,17 @@
 
 Hi, my name is Sander. I'm a web developer from Belgium.
 
-If you ever want to get in touch, feel free to contact me. [Here](https://www.drupal.org/u/sqndr)'s my Drupal.org account.
+If you ever want to get in touch, feel free to contact me.
+
+- [Drupal.org](https://www.drupal.org/u/sqndr).
+- [Twitter](http://twitter.com/sqndr).
+- - [Twitter](http://twitter.com/sqndr).
 
 ![With more than 200 new features and improvements, the upcoming release of the world’s leading open source web content management platform will win you over.](https://www.drupal.org/sites/all/modules/drupalorg/drupalorg/images/d8.svg)
 
 ## Introduction
 
-Drupal 8 is going to be a huge change for the entire community. In order to get front-end developers ready for Drupal 8, I started this theming guide. It contains an overview of how you can build a Drupal 8 theme, using modern front-end tools. 
+Drupal 8 is going to be a huge change for the entire community. In order to get front-end developers ready for Drupal 8, I started this theming guide. It contains an overview of how you can build a Drupal 8 theme, using modern front-end tools. If you find any mistakes or outdated documention, feel free to add a pull request.
 
 ## Table of content
 
@@ -89,7 +93,14 @@ There are coding standards for css, javascript and the new Twig template engine:
 
 ## Theme engines
 
-Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines.
+Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig** (woop, woop - awesome). 
+
+### What is a theme engine?
+
+A theme engines (template engine, template processor or template parser) is a software components that **combines data with templates** from themes and shows the result - the final HTML - to the user.
+
+![Template Engine image from Wikipedia](http://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TempEngGen015.svg/440px-TempEngGen015.svg.png)
+
 
 ### Twig
 
@@ -99,7 +110,7 @@ Twig is a completely new theme/template system. This means `theme_*` functions a
 
 #### Advantages
 
-- Twig is more secure, due to the fact that only a number of tags can be used. In the previous PHPTemplate, it was possible for a template file to execute the following code:
+- Twig is more secure, due to the fact that only a number of tags can be used. In the previous PHPTemplate), it was possible for a template file to execute the following code:
 
 		<?php
 		db_query('DROP TABLE {users}');
@@ -107,7 +118,7 @@ Twig is a completely new theme/template system. This means `theme_*` functions a
 	
   This should of course not be the case.
 
-- There now is a clear separation between the *logic* and the *view*, resulting in no more php code inside your twig/html templates.
+- There now is a clear separation between the *logic* and the *view*, resulting in no more PHP code inside your twig/html templates.
 - The syntax is very easy to understand, making the code more readable as well. Also, many IDE's have syntax highlighting for `*.twig` files.
 - Template files are reusable, thanks to [Twig includes](http://twig.sensiolabs.org/doc/tags/include.html).
 - Twig is very well documented. Go ahead and [start reading the documentation here](http://twig.sensiolabs.org/documentation).
