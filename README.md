@@ -6,7 +6,7 @@ If you ever want to get in touch, feel free to contact me.
 
 - [Drupal.org](https://www.drupal.org/u/sqndr).
 - [Twitter](http://twitter.com/sqndr).
-- - [Twitter](http://twitter.com/sqndr).
+- [Twitter](http://twitter.com/sqndr).
 
 ![With more than 200 new features and improvements, the upcoming release of the world’s leading open source web content management platform will win you over.](https://www.drupal.org/sites/all/modules/drupalorg/drupalorg/images/d8.svg)
 
