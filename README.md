@@ -280,7 +280,7 @@ Regions can be defined using the `regions` tag. Here is an example where 3 regio
 
 > Drupal 8 doesn't load any additional scripts. This also means that by default a library like [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it got [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
 
-Let's add some custom javascript to our theme. Our script will location in the `js` folder inside our theme (`/js/custom-script.js`). Next, we create a `*.libraries.yml` file. Let's call this `awesome.libraries.yml` ({theme_name}.libraries.yml) and save it into the root of our theme (). 
+Let's add some custom javascript to our theme. Our script will location in the `js` folder inside our theme (`/js/custom-script.js`). Next, we create a `*.libraries.yml` file. Let's call this `awesome.libraries.yml` (`{theme-or-module-name}`.libraries.yml) and save it into the root of our theme. 
 	
 	base:
 	  version: 1.x
