@@ -52,6 +52,8 @@ Twig is a completely new theme/template system. This means the `theme_*` functio
 - [Drupal 8 does not support browsers that do not support SVG](https://www.drupal.org/node/2298227)
 Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the admin UI. No effort is made to cater for browsers that do not support SVG. This includes IE8 and below and Android Browser 2.3 and below.
 
+- Due to the fact that these older browsers are no longer supported, the css in Drupal core is able to more a big step forward. Instead of adding classes like odd, even, first and last; we are now able to use pseudo selectors. [Most first/last/odd/even classes removed in favor of CSS3 pseudo selectors](https://www.drupal.org/node/2178215)
+
 - [An new, empty core theme](https://www.drupal.org/node/2289511)
 Read more on *classy*, a new core theme below. 
 
@@ -208,7 +210,7 @@ To wrap things up, this is our `.info.yml` file so far:
 	version: 1.0
 	core: 8.x
 	
-Save this as `{theme_name}.info.yml` inside the created custom theme directory (eg. `themes/custom/example/example.info.yml`). Now navigate to `admin/appearance` and see your theme displayed. You can now even enable the theme. Hooray!
+Save this as `{theme_name}.info.yml` (`awesome.info.yml`) inside the created custom theme directory (eg. `themes/custom/example/example.info.yml`). Now navigate to `admin/appearance` and see your theme displayed. You can now even enable the theme. Hooray!
   		    
 #### Adding a screenshot
 
@@ -276,9 +278,9 @@ Regions can be defined using the `regions` tag. Here is an example where 3 regio
 
 ### Libraries and Scripts
 
-> Drupal 8 doesn't load any additional scripts. This also means that by default [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it was [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
+> Drupal 8 doesn't load any additional scripts. This also means that by default a library like [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it got [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
 
-Let's add a custom script to our theme. The script is location in the `js` folder inside our theme (`/js/custom-script.js`). Next, create a `*.libraries.yml` file. Let's call this `{theme}.libraries.yml`:
+Let's add some custom javascript to our theme. Our script will location in the `js` folder inside our theme (`/js/custom-script.js`). Next, we create a `*.libraries.yml` file. Let's call this `awesome.libraries.yml` and save it into the root of our theme. 
 	
 	base:
 	  version: 1.x
@@ -287,14 +289,26 @@ Let's add a custom script to our theme. The script is location in the `js` folde
 	  dependencies:
 	    - core/jquery
 	    
-Back in our `{theme}.info.yml` file, we add the following lines:
+Back in our `awesome.info.yml` file, we now add the following lines, to include our new *library* into our theme.
 
 	libraries:
 		- example/base
 
-This includes our "libraries" (the custom javascript) and the dependencies into our theme. In this example, the custom script as well as the jQuery library are now included in our theme. 
+This includes our the custom javascript and the dependencies into our theme. In this example, both the custom script and the jQuery library are now included in our theme.
 
-There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.drupal.org/node/2273769).
+`Drupal.behaviors` are still part of javascript in core. Let's open the `custom-script.js` and add a little behavior.
+
+	(function ($) {
+	  Drupal.behaviors.awesome = {
+        attach: function (context, settings) {
+          $('main').append('<p>Hello world</p>');
+        }
+      };
+	}(jQuery));
+	
+Let's have a quick look at what this does.
+
+The behavior has to have a unique namespace. In the example; the namespace is `awesome`, `Drupal.behaviors.awesome`. The `context` variable is the part of the page for which this applies.  The `settings` variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a `p`aragraph-tag, with the text *Hello world*, and appends it to the `main`tag.
 
 ## Breakpoints
 
