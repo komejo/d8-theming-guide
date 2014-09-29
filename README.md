@@ -11,7 +11,7 @@ If you ever want to get in touch, feel free to contact me.
 
 ## Typos
 
-Since this text is constantly in progress - it still contains (a lot) of typos. Sorry about that :)
+Since this text is constantly in progress - it still contains some typos. Sorry about that :)
 
 ## Demo code
 
