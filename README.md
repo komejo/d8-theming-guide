@@ -276,6 +276,8 @@ Regions can be defined using the `regions` tag. Here is an example where 3 regio
 		content: 'Content'
 		footer: 'Footer'
 
+## Javascript
+
 ### Libraries and Scripts
 
 > Drupal 8 doesn't load any additional scripts. This also means that by default a library like [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it got [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
@@ -312,7 +314,7 @@ Let's have a quick look at what this does.
 The behavior has to have a unique namespace. In the example; the namespace is `awesome` (part of `Drupal.behaviors.awesome`). The `context` variable is the part of the page for which this applies.  The `settings` variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a `p`aragraph-tag, with the text *Hello world*, and appends it to the `main`tag.
 
 
-#### File-closure
+### File-closure
 
 All of the javascript code **must** be declared inside a closure wrapping the whole file. This closure **must** be in strict mode (see below).
 
@@ -321,11 +323,11 @@ All of the javascript code **must** be declared inside a closure wrapping the wh
   	  // Custom javascript
 	})();
 
-#### "use scrict"
+### "use scrict"
 
 The `"use strict"` directive is new in JavaScript 1.8.5 and ignored by previous versions of javascript. The purpose of `"use strict"` is to indicate that the code should be executed in "strict mode". As an example, in *scrict mode*, you cannot use undeclared variables.
 
-#### ESHint
+### ESHint
 
 > As of Drupal 8, we use ESLint to make sure our JavaScript code is consistent and free from syntax error and leaking variables and that it can be properly minified.
 
