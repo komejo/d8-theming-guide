@@ -1,8 +1,10 @@
 # The Drupal 8 Theming guide
 
+![This is me](https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/me.png)
+
 Hi, my name is Sander. I'm a web developer from Belgium.
 
-If you ever want to get in touch, feel free to contact me.
+If you ever want to get in touch, feel free to contact me. By the way, I'm at **DrupalCon Amsterdam** at the moment!
 
 - [Drupal.org](https://www.drupal.org/u/sqndr)
 - [Twitter](http://twitter.com/sqndr)
@@ -137,7 +139,7 @@ Twig is a modern template engine for PHP. All of the `theme_*` functions and PHP
 	
   This should of course not be the case. In case you're wondering what it does: it removes the entire `users` table from your database. Not good, right?
 
-- There now is a clear separation between the *logic* and the *view*. The means: no more PHP code inside your template files. 
+- There now is a clear separation between the *logic* and the *view*. This means: no more PHP code inside your template files. 
 - The syntax is very easy to understand, making the code more readable as well. Also, many IDE's have syntax highlighting for `*.twig` files.
 - Template files are reusable, thanks to [Twig includes](http://twig.sensiolabs.org/doc/tags/include.html).
 - Debugging is much more easy. First of all, Twig outputs a helpful message with the filename and the line number whenever there is a syntax problem within a template. Secondly, you can turn on a Twig debug function. More on that later. 
