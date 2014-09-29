@@ -21,7 +21,7 @@ Recently, I've added some example code in the repo to get you started. The examp
 
 ## Introduction
 
-Drupal 8 is going to be a huge change for the entire community. In order to get front-end developers ready for Drupal 8, I started this theming guide. It contains an overview of how you can build a Drupal 8 theme, using modern front-end tools. If you find any mistakes or outdated documention, feel free to add a pull request.
+Drupal 8 is going to be a huge change for the entire community. In order to get front-end developers ready for Drupal 8, I started this theming guide. It contains an overview of how you can build a Drupal 8 theme, using modern front-end tools. If you find any mistakes or outdated documentation, feel free to add a pull request.
 
 ## Table of content
 
@@ -55,7 +55,7 @@ Read more on *classy*, a new core theme below.
 
 - [CSS classes being moved from preprocess to Twig templates](https://www.drupal.org/node/2325067).
 
-![MortenDK appoves](http://mortendk.github.io/drupal8-twig-frankfurt-2014/images/cssfilename-approved.jpg)
+![MortenDK approved](http://mortendk.github.io/drupal8-twig-frankfurt-2014/images/cssfilename-approved.jpg)
 
 ## Drupal core themes
 
@@ -81,7 +81,7 @@ You might remember these three themes from Drupal 7. But wait, there's more ...
 
 > For Drupal 8, [a style guide for Seven](https://groups.drupal.org/node/283223) was introduced.
 
-> A sad thing about the style guide was that the font (Source Sans) could not make it into core [due to licence issues](https://www.drupal.org/node/1986082). The default font family used in the Seven (and Bartik theme) is **Lucida Grande**. Sadly the style guide never got an update. The licencing issue is still a thing. If you want to get involed, jump over to [https://www.drupal.org/node/2010902](https://www.drupal.org/node/2010902)
+> A sad thing about the style guide was that the font (Source Sans) could not make it into core [due to licence issues](https://www.drupal.org/node/1986082). The default font family used in the Seven (and Bartik theme) is **Lucida Grande**. Sadly the style guide never got an update. The licensing issue is still a thing. If you want to get involved, jump over to [https://www.drupal.org/node/2010902](https://www.drupal.org/node/2010902)
 
 ![Seven screenshot](https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/seven.png)
 
@@ -113,7 +113,7 @@ There are coding standards for css, javascript and the new Twig template engine:
 
 ## Theme engines
 
-Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig**. The default template engine from Drupal 7, PHPTemplate, does still exist. Altough it's not recommended to continue using the engine, it might be useful when you're migrating your Drupal 7 site to Drupal 8. 
+Inside the `core/themes` lives a fourth folder (besides `bartik`, `seven` and `stark`), called `engines`. This folder contains the theme engines. In Drupal 8, the default template engine is **Twig**. The default template engine from Drupal 7, PHPTemplate, does still exist. Although it's not recommended to continue using the engine, it might be useful when you're migrating your Drupal 7 site to Drupal 8. 
 
 ### What is a theme engine?
 
@@ -154,7 +154,7 @@ All right. Now is the time to get really excited. We're about to create a Drupal
 
 > If you're familiar with Drupal 7 theming, the first place for you to look at would be `drupal/sites/all/themes/{custom/}` (the place where all your custom themes lived in Drupal 7).
 
-In Drupal 8, this location has changed. Custom and contrib themes now live in `drupal/themes`. Also notice that (custom and contrib) modules now live inside `drupal/modules` (insted of drupal/sites/all/modules/).
+In Drupal 8, this location has changed. Custom and contrib themes now live in `drupal/themes`. Also notice that (custom and contrib) modules now live inside `drupal/modules` (instead of drupal/sites/all/modules/).
 
 > Did you notice {*custom*}? It's always a good practice to separate the contrib themes (the one's you've been downloading from d.o) and the ones you've written yourself. This can simply be done by creating two folders inside the `themes` directory:
 
@@ -163,7 +163,7 @@ In Drupal 8, this location has changed. Custom and contrib themes now live in `d
 
 ### Create your custom theme directory
 
-Let's create an `example` directory inside `themes/custom`, resulting in `themes/custom/example`. Inside this direcoty, all the code for our custom theme will live.  
+Let's create an `example` directory inside `themes/custom`, resulting in `themes/custom/example`. Inside this directory, all the code for our custom theme will live.  
 
 ## Creating an info file
 
@@ -300,7 +300,7 @@ There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.dru
 
 - [Breakpoint added to Drupal 8](https://www.drupal.org/node/1813914)
 
-> The Breakpoints module keeps track of the height, width, and resolution breakpoints where a responsive design needs to change in order to respond to different devices being used to view the site. The Breakpoints module standardizes the use of breakpoints, and enables modules and themes to expose or use each others' breakpoints.
+> The Breakpoints module keeps track of the height, width, and resolution breakpoints where a responsive design needs to change in order to respond to different devices being used to view the site. The Breakpoints module standardises the use of breakpoints, and enables modules and themes to expose or use each others' breakpoints.
 
 Both themes and modules can define breakpoints by creating a configuration file called `{name}.breakpoints.yml` where `{name}` is the name of your theme or module. 
 
@@ -324,9 +324,7 @@ To get a good example, let look at `bartik.breakpoints.yml`:
 	  mediaQuery: 'all and (min-width: 851px)'
 	  weight: 2
 	  multipliers:
-	    - 1x
-
-The file is very straight forward. First, you declair 
+	    - 1x 
 
 [@todo]
 
