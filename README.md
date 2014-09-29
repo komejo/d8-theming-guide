@@ -292,7 +292,7 @@ There still is a huge bug: [https://www.drupal.org/node/2273769](https://www.dru
 
 > The Breakpoints module keeps track of the height, width, and resolution breakpoints where a responsive design needs to change in order to respond to different devices being used to view the site. The Breakpoints module standardizes the use of breakpoints, and enables modules and themes to expose or use each others' breakpoints.
 
-Both themes and modules can define breakpoints by creating a configuration file called `{name}.breakpoints.yml` where `{name}` is the name of your theme of module. 
+Both themes and modules can define breakpoints by creating a configuration file called `{name}.breakpoints.yml` where `{name}` is the name of your theme or module. 
 
 
 To get a good example, let look at `bartik.breakpoints.yml`:
@@ -316,7 +316,7 @@ To get a good example, let look at `bartik.breakpoints.yml`:
 	  multipliers:
 	    - 1x
 
-The file is very straight forward. First, you declair the name of the breakpoint group. 
+The file is very straight forward. First, you declair 
 
 [@todo]
 

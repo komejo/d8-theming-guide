@@ -1,0 +1,7 @@
+name: Awesome Theme
+description: 'An awesome D8 theme.'
+package: Custom
+type: theme
+version: 1.0
+core: 8.x
+screenshot: awesome.png
