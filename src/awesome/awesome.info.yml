@@ -6,6 +6,20 @@ version: 1.0
 core: 8.x
 screenshot: awesome.png
 
+# Including our custom javascript
+libraries:
+  - awesome/base
+
+# Defining the regions
+regions:
+  header: Header
+  help: Help
+  highlighted: Highlighted
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: Footer
+
 # Adding styles.css to our theme.
 stylesheets:
   all:

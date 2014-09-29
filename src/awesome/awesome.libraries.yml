@@ -1,0 +1,6 @@
+base:
+  version: VERSION
+  js:
+    js/awesome.js: {}
+  dependencies:
+    - core/jquery
