@@ -52,7 +52,7 @@ Twig is a completely new theme/template system. This means the `theme_*` functio
 - [Drupal 8 does not support browsers that do not support SVG](https://www.drupal.org/node/2298227)
 Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the admin UI. No effort is made to cater for browsers that do not support SVG. This includes IE8 and below and Android Browser 2.3 and below.
 
-- Due to the fact that these older browsers are no longer supported, the css in Drupal core is able to more a big step forward. Instead of adding classes like odd, even, first and last; we are now able to use pseudo selectors. [Most first/last/odd/even classes removed in favor of CSS3 pseudo selectors](https://www.drupal.org/node/2178215)
+- Due to the fact that these older browsers are no longer supported, the css in Drupal core is able to move a big step forward. Instead of adding classes like odd, even, first and last; we are now able to use pseudo selectors. [Most first/last/odd/even classes removed in favor of CSS3 pseudo selectors](https://www.drupal.org/node/2178215)
 
 - [An new, empty core theme](https://www.drupal.org/node/2289511)
 Read more on *classy*, a new core theme below. 
@@ -308,14 +308,14 @@ This includes our the custom javascript and the dependencies into our theme. In 
   	  "use strict"
   	    Drupal.behaviors.mymodule = {
           attach: function (context, settings) {
-            $('main').append('<p>Hello world</p>');
+            $('main').once('awesome').append('<p>Hello world</p>');
           }
   	    };
 	}(jQuery));
 	
 Let's have a quick look at what this does.
 	
-The behavior has to have a unique namespace. In the example; the namespace is `awesome` (part of `Drupal.behaviors.awesome`). The `context` variable is the part of the page for which this applies.  The `settings` variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a `p`aragraph-tag, with the text *Hello world*, and appends it to the `main`tag.
+The behavior has to have a unique namespace. In the example; the namespace is `awesome` (part of `Drupal.behaviors.awesome`). The `context` variable is the part of the page for which this applies.  The `settings` variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a `p`aragraph-tag, with the text *Hello world*, and appends it to the `main`tag. Using the `.once(awesome)` will make sure the code only runs once. It adds a `processed`- class to the `main` tag (`<main role="main" class="awesome-processed">`) in order to accomplish this.
 
 
 ### File-closure
