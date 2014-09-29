@@ -80,6 +80,7 @@ This is important because in a default Drupal 8 installation, CSS and JS aggrega
 Twig is a completely new theme/template system. This means the <code>theme_*</code> functions and PHP-based <code>*.tpl.php</code> files have been completely replace in D8.</p></li>
 <li><p><a href="https://www.drupal.org/node/2298227">Drupal 8 does not support browsers that do not support SVG</a>
 Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the admin UI. No effort is made to cater for browsers that do not support SVG. This includes IE8 and below and Android Browser 2.3 and below.</p></li>
+<li><p>Due to the fact that these older browsers are no longer supported, the css in Drupal core is able to more a big step forward. Instead of adding classes like odd, even, first and last; we are now able to use pseudo selectors. <a href="https://www.drupal.org/node/2178215">Most first/last/odd/even classes removed in favor of CSS3 pseudo selectors</a></p></li>
 <li><p><a href="https://www.drupal.org/node/2289511">An new, empty core theme</a>
 Read more on <em>classy</em>, a new core theme below. </p></li>
 <li><p><a href="https://www.drupal.org/node/2325067">CSS classes being moved from preprocess to Twig templates</a>.</p></li>
@@ -284,7 +285,7 @@ version: 1.0
 core: 8.x
 </code></pre>
 
-<p>Save this as <code>{theme_name}.info.yml</code> inside the created custom theme directory (eg. <code>themes/custom/example/example.info.yml</code>). Now navigate to <code>admin/appearance</code> and see your theme displayed. You can now even enable the theme. Hooray!</p>
+<p>Save this as <code>{theme_name}.info.yml</code> (<code>awesome.info.yml</code>) inside the created custom theme directory (eg. <code>themes/custom/example/example.info.yml</code>). Now navigate to <code>admin/appearance</code> and see your theme displayed. You can now even enable the theme. Hooray!</p>
 
 <h4 id="addingascreenshot">Adding a screenshot</h4>
 
@@ -364,10 +365,10 @@ regions:
 <h3 id="librariesandscripts">Libraries and Scripts</h3>
 
 <blockquote>
-<p>Drupal 8 doesn&#8217;t load any additional scripts. This also means that by default <a href="https://www.drupal.org/node/1541860">jQuery is not included</a>. You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using <code>hook_library_info</code>. Since this was one of the last remaining hooks in Drupal 8, it was <a href="https://www.drupal.org/node/2201089">replaced by a <code>*.libraries.yml</code> file</a>.</p>
+<p>Drupal 8 doesn&#8217;t load any additional scripts. This also means that by default a library like <a href="https://www.drupal.org/node/1541860">jQuery is not included</a>. You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using <code>hook_library_info</code>. Since this was one of the last remaining hooks in Drupal 8, it got <a href="https://www.drupal.org/node/2201089">replaced by a <code>*.libraries.yml</code> file</a>.</p>
 </blockquote>
 
-<p>Let&#8217;s add a custom script to our theme. The script is location in the <code>js</code> folder inside our theme (<code>/js/custom-script.js</code>). Next, create a <code>*.libraries.yml</code> file. Let&#8217;s call this <code>{theme}.libraries.yml</code>:</p>
+<p>Let&#8217;s add some custom javascript to our theme. Our script will location in the <code>js</code> folder inside our theme (<code>/js/custom-script.js</code>). Next, we create a <code>*.libraries.yml</code> file. Let&#8217;s call this <code>awesome.libraries.yml</code> ({theme_name}.libraries.yml) and save it into the root of our theme (). </p>
 
 <pre><code>base:
   version: 1.x
@@ -377,15 +378,51 @@ regions:
     - core/jquery
 </code></pre>
 
-<p>Back in our <code>{theme}.info.yml</code> file, we add the following lines:</p>
+<p>Back in our <code>awesome.info.yml</code> file, we now add the following lines, to include our new <em>library</em> into our theme.</p>
 
 <pre><code>libraries:
-    - example/base
+  - awesome/base
 </code></pre>
 
-<p>This includes our &#8220;libraries&#8221; (the custom javascript) and the dependencies into our theme. In this example, the custom script as well as the jQuery library are now included in our theme. </p>
+<p>This includes our the custom javascript and the dependencies into our theme. In this example, both the custom script and the jQuery library are now included in our theme.</p>
 
-<p>There still is a huge bug: <a href="https://www.drupal.org/node/2273769">https://www.drupal.org/node/2273769</a>.</p>
+<p><code>Drupal.behaviors</code> are still part of javascript in core. Let&#8217;s open the <code>custom-script.js</code> and add a little behavior.</p>
+
+<pre><code>(function ($) {
+  &quot;use strict&quot;
+    Drupal.behaviors.mymodule = {
+      attach: function (context, settings) {
+        $('main').append('&lt;p&gt;Hello world&lt;/p&gt;');
+      }
+    };
+}(jQuery));
+</code></pre>
+
+<p>Let&#8217;s have a quick look at what this does.</p>
+
+<p>The behavior has to have a unique namespace. In the example; the namespace is <code>awesome</code> (part of <code>Drupal.behaviors.awesome</code>). The <code>context</code> variable is the part of the page for which this applies. The <code>settings</code> variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a <code>p</code>aragraph-tag, with the text <em>Hello world</em>, and appends it to the <code>main</code>tag.</p>
+
+<h4 id="file-closure">File-closure</h4>
+
+<p>All of the javascript code <strong>must</strong> be declared inside a closure wrapping the whole file. This closure <strong>must</strong> be in strict mode (see below).</p>
+
+<pre><code>(function () {
+  &quot;use strict&quot;;
+  // Custom javascript
+})();
+</code></pre>
+
+<h4 id="usescrict">&#8220;use scrict&#8221;</h4>
+
+<p>The <code>&quot;use strict&quot;</code> directive is new in JavaScript 1.8.5 and ignored by previous versions of javascript. The purpose of <code>&quot;use strict&quot;</code> is to indicate that the code should be executed in &#8220;strict mode&#8221;. As an example, in <em>scrict mode</em>, you cannot use undeclared variables.</p>
+
+<h4 id="eshint">ESHint</h4>
+
+<blockquote>
+<p>As of Drupal 8, we use ESLint to make sure our JavaScript code is consistent and free from syntax error and leaking variables and that it can be properly minified.</p>
+</blockquote>
+
+<p><a href="https://www.drupal.org/node/1955232">More on ESLint</a></p>
 
 <h2 id="breakpoints">Breakpoints</h2>
 
