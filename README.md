@@ -161,11 +161,11 @@ Let's create an `example` directory inside `themes/custom`, resulting in `themes
 
 Again, if you're familiar with Drupal 7 theming, your first idea might be to start with creating an `.info` file. In Drupal 8, `.info` files are replaced by `.info.yml` files ([read the change record](https://www.drupal.org/node/1935708)). These files are parsed using the Symphony YAML Component. This change also applies for modules and installation profiles. They both require a `.info.yml` now, instead of the old `.info` file. Once you've created the file, it's time to add the write the first line of code.
 
-	name: Example Theme
+	name: Awesome Theme
 	
 Fairly simple. This is the name of your theme. It's the name that also appears on the *Appearance* page, where you can activate your theme.
 	
-	description: 'An example D8 theme.'
+	description: 'An awesome D8 theme.'
 
 A theme description. This description is also displayed on the *Appearance* page.
 
@@ -189,8 +189,8 @@ The version of Drupal core the theme requires.
 
 To wrap things up, this is our `.info.yml` file so far:
 
-	name: Example Theme
-	description: 'An example D8 theme.'
+	name: Awesome Theme
+	description: 'An awesome D8 theme.'
 	package: Custom
 	type: theme
 	version: 1.0
@@ -213,7 +213,7 @@ So, the filename for a screenshot does not have to be `screenshot.png`, as long 
 It's of course important to know how to add stylesheets to your theme. Let's add a css file called `styles.css` (that lives inside the `css` directory: `/css/styles.css`) to our theme.
 
 	# Adding styles.css to our theme.
-	stlesheets:
+	stylesheets:
 		all:
 			- css/styles.css
 			
@@ -228,7 +228,7 @@ The css file is now added. The `all` keyword stands for the media tag inside the
 So ... now that you know this, it's very easy to add a print stylesheet to our theme as well:
 
 	# Adding a print stylesheet to our theme.
-	stlesheets:
+	stylesheets:
 		print:
 			- css/print.css
 					

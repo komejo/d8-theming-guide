@@ -5,3 +5,8 @@ type: theme
 version: 1.0
 core: 8.x
 screenshot: awesome.png
+
+# Adding styles.css to our theme.
+stylesheets:
+  all:
+    - css/styles.css
