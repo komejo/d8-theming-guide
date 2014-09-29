@@ -1,0 +1,464 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>README</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/* 
+ This document has been created with Marked.app <http://markedapp.com>, Copyright 2011 Brett Terpstra
+ Please leave this notice in place, along with any additional credits below.
+ ---------------------------------------------------------------
+ Title: Mutli-column
+ Author: Brett Terpstra
+ Description: CSS3 Multi-column layout, column number changes based on width of viewer
+*/
+body{font:normal .8764em/1.5em;margin:0}html>body{font-size:14px}p{margin:1.3125em 0;font-size:1.1429em;line-height:1.3125em}li{font-size:100%}h1{margin:.6563em 0;font-size:2.2857em;line-height:.6563em}h2{margin:.875em 0;font-size:1.7143em;line-height:.875em}h3{margin:1em 0;font-size:1.5em;line-height:1em}h4{margin:1.1667em 0;font-size:1.2857em;line-height:1.1667em}h5{margin:1.3125em 0;font-size:1.1429em;line-height:1.3125em}h6{margin:1.5em 0;font-size:1em;line-height:1.5em}body,p,td,div{font-family:"Lucida Grande",Lucida,Verdana,sans-serif;line-height:1.4em;font-size:14px;color:#333;word-wrap:break-word;-webkit-font-smoothing:antialiased}h1,h2,h3,h4{color:#333;line-height:1.5em}p{margin:0 0 1.7em 0}a{color:#0d6ea1;text-decoration:none;-webkit-transition:color .2s ease-in-out}a:hover{color:#3593d9}.footnote{font-size:.8em;vertical-align:super;color:#0d6ea1}#wrapper img{max-width:100%;height:auto}dt{font-weight:bold}dd{margin-bottom:1em}blockquote{margin-left:10px}.footnotes{-webkit-column-break-inside:avoid-column;-webkit-column-break-before:always}@media screen{::selection{background:rgba(157,193,200,.5)}h1::selection{background-color:rgba(45,156,208,.3)}h2::selection{background-color:rgba(90,182,224,.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,.3)}code::selection{background-color:rgba(0,0,0,.7);color:#eee}code span::selection{background-color:rgba(0,0,0,.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,.2)}.inverted a::selection{background-color:rgba(255,230,102,.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,.5)}.inverted{background:#0b2531}.inverted,.inverted #wrapper{background:#111!important}.inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted pre,.inverted code,.inverted th,.inverted .math,.inverted dd,.inverted dt{color:#eee!important}.inverted a{color:#fff;text-decoration:underline}body{height:100%!important;padding:20px!important}#wrapper{background:transparent;color:#303030;text-indent:0;padding:10px;margin:10px;overflow:visible;-webkit-hyphens:auto;hyphens:auto;max-width:100%!important}}@media only screen and (min-width:1101px){body{font-size:.8em;line-height:1.5em}#wrapper{-webkit-column-width:340px;-webkit-column-gap:20px}}@media only screen and (max-width:1100px){body{font-size:.8em;line-height:1.5em}#wrapper{-webkit-column-count:2;-webkit-column-width:300px;-webkit-column-gap:20px}}@media only screen and (max-width:599px){body{font-size:.8em;line-height:1.5em}#wrapper{-webkit-column-count:1;-webkit-column-gap:20;width:85%}}ul,ol{padding:0;list-style-position:outside;margin-left:20px}li{margin-bottom:.5em}li>p{margin:0 0 1em}ul ul,ul ol{margin-top:1em}caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr{border-spacing:0}table{display:table;table-layout:fixed;border-collapse:collapse;empty-cells:hide;margin:0;padding:0;margin-bottom:24px;border:0}caption{display:table-caption;font-weight:bold}col{display:table-column}colgroup{display:table-column-group}tbody{display:table-row-group}tfoot{display:table-footer-group}thead{display:table-header-group}td,th{display:table-cell}th{font-weight:bold}tr{display:table-row}table{margin-top:-1px;margin-bottom:23px;border:1px solid rgba(0,0,0,0.25)}table th,table td{padding:0 1em;font-size:1.1em;line-height:23px}table thead{background-color:rgba(0,0,0,0.15)}table tbody{background-color:rgba(0,0,0,0.05)}table tfoot{background-color:rgba(0,0,0,0.15)}table tr:nth-child(odd){background-color:rgba(255,255,255,0.06)}table tr:nth-child(even){background-color:rgba(0,0,0,0.06)}table th:nth-child(odd),table td:nth-child(odd){background-color:rgba(255,255,255,0.06)}table td:nth-child(even){background-color:rgba(0,0,0,0.06)}table thead{border:1px solid rgba(0,0,0,0.15);border-bottom:1px solid rgba(0,0,0,0.2)}table tfoot{border:1px solid rgba(0,0,0,0.15);border-top:1px solid rgba(0,0,0,0.2)}figure{position:relative;display:inline-block;margin-bottom:1.2em}figcaption{text-align:center;position:absolute;background:rgba(0,0,0,0);width:100%;left:0;bottom:0;color:rgba(255,255,255,0);-webkit-transition:all .2s ease-in-out}figure:hover{cursor:pointer}figcaption:hover{background:rgba(0,0,0,.56);color:rgba(255,255,255,1)}@media print{body{overflow:auto;max-width:600px!important}img,pre,blockquote,table,figure{page-break-inside:avoid}#wrapper{background:#fff;position:relative;color:#303030;text-indent:0;padding:10px;font-size:85%}}pre code{-webkit-column-break-inside:avoid-column}.poetry pre{font-family:Georgia,Garamond,serif!important;font-style:italic;font-size:110%!important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}.modern #firstdiff{width:105%!important;background:transparent;text-align:right}@media screen { #wrapper {position: absolute;left:20px;top:20px;bottom:20px} }
+
+</style>
+
+</head>
+<body class="normal">
+  <div id="wrapper">
+      <h1 id="thedrupal8themingguide">The Drupal 8 Theming guide</h1>
+
+<figure>
+<img src="https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/me.png" alt="This is me" />
+<figcaption>This is me</figcaption></figure>
+
+
+
+<p>Hi, my name is Sander. I&#8217;m a web developer from Belgium.</p>
+
+<p>If you ever want to get in touch, feel free to contact me. By the way, I&#8217;m at <strong>DrupalCon Amsterdam</strong> at the moment!</p>
+
+<ul>
+<li><a href="https://www.drupal.org/u/sqndr">Drupal.org</a></li>
+<li><a href="http://twitter.com/sqndr">Twitter</a></li>
+</ul>
+
+<figure>
+<img src="https://www.drupal.org/sites/all/modules/drupalorg/drupalorg/images/d8.svg" alt="With more than 200 new features and improvements, the upcoming release of the world’s leading open source web content management platform will win you over." />
+<figcaption>With more than 200 new features and improvements, the upcoming release of the world’s leading open source web content management platform will win you over.</figcaption></figure>
+
+
+
+<h2 id="typos">Typos</h2>
+
+<p>Since this text is constantly in progress - it still contains some typos. Sorry about that :)</p>
+
+<h2 id="democode">Demo code</h2>
+
+<p>Recently, I&#8217;ve added some example code in the repo to get you started. The example theme can be found in the <code>src</code> folder. Have fun with. Happy Drupal 8 theming. </p>
+
+<blockquote>
+<p>Get Twiggy with it!</p>
+</blockquote>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Drupal 8 is going to be a huge change for the entire community. In order to get front-end developers ready for Drupal 8, I started this theming guide. It contains an overview of how you can build a Drupal 8 theme, using modern front-end tools. If you find any mistakes or outdated documentation, feel free to add a pull request.</p>
+
+<h2 id="tableofcontent">Table of content</h2>
+
+<p>[@todo: Add table of content]</p>
+
+<h2 id="somemajorchanges">Some major changes</h2>
+
+<p>Let&#8217;s kick of with some major changes that you, as a Drupal themer, must be aware of. This is especially useful if you&#8217;ve been involved in Drupal 7 theming in the past.</p>
+
+<ul>
+<li><p>The markup in Drupal 8 is now <a href="http://buytaert.net/html5-in-drupal-8">HTML5</a>. New tags like <code>header</code>, <code>nav</code>, <code>article</code> are used in core. </p></li>
+<li><p><a href="https://www.drupal.org/node/1179668">WAI-ARIA Roles</a> are added. They are a set of roles, states, and properties, which can be applied to markup to provide rich semantics, increasing accessibility and interoperability. Although WAI-ARIA properties were not valid in xhtml 1.0, they are valid in HTML5, and can therefore be applied in the markup of Drupal 8. By using the role attribute with an HTML element, authors can provide more information about the purpose of components on the page.</p></li>
+<li><p><code>&lt;DIV ID=&quot;BAD-PRACTICE&quot;&gt;...&lt;/DIV&gt;</code>. Drupal 8 now has 75% less ID&#8217;s than the Drupal 7 CSS! <strong>Kill all the #ids</strong>!</p></li>
+<li><p><a href="https://www.drupal.org/node/1887918">The CSS (File) Structure</a> is based on SMACSS &amp; BEM.</p></li>
+<li><p><a href="https://groups.drupal.org/mobile/drupal-8">Drupal is now of the box responsive and mobile ready.</a></p></li>
+<li><p><a href="https://www.drupal.org/node/2259531">The default settings and config are changed to be fast and safe production values.</a>
+This is important because in a default Drupal 8 installation, CSS and JS aggregation is enabled. On your local development environment, you &#8220;might&#8221; want to disable this. </p></li>
+<li><p><a href="https://www.drupal.org/node/1831138">A completely new theme/template system: Twig</a>
+Twig is a completely new theme/template system. This means the <code>theme_*</code> functions and PHP-based <code>*.tpl.php</code> files have been completely replace in D8.</p></li>
+<li><p><a href="https://www.drupal.org/node/2298227">Drupal 8 does not support browsers that do not support SVG</a>
+Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the admin UI. No effort is made to cater for browsers that do not support SVG. This includes IE8 and below and Android Browser 2.3 and below.</p></li>
+<li><p><a href="https://www.drupal.org/node/2289511">An new, empty core theme</a>
+Read more on <em>classy</em>, a new core theme below. </p></li>
+<li><p><a href="https://www.drupal.org/node/2325067">CSS classes being moved from preprocess to Twig templates</a>.</p></li>
+</ul>
+
+<figure>
+<img src="http://mortendk.github.io/drupal8-twig-frankfurt-2014/images/cssfilename-approved.jpg" alt="MortenDK approved" />
+<figcaption>MortenDK approved</figcaption></figure>
+
+
+
+<h2 id="drupalcorethemes">Drupal core themes</h2>
+
+<p>Drupal core themes live inside <code>core/themes</code>. Inside this folder we can find the three (at the moment) Drupal 8 core themes:</p>
+
+<ul>
+<li><strong>bartik</strong>: <em>A flexible, recolorable theme with many regions and a responsive, mobile-first layout.</em></li>
+<li><strong>seven</strong>: <em>The default administration theme for Drupal 8 was designed with clean lines, simple blocks, and sans-serif font to emphasize the tools and tasks at hand.</em></li>
+<li><strong>stark</strong>: <em>An intentionally plain theme with almost no styling to demonstrate default Drupal’s HTML and CSS.</em></li>
+</ul>
+
+<p>You might remember these three themes from Drupal 7. But wait, there&#8217;s more &#8230;</p>
+
+<ul>
+<li><strong>classy</strong>: [[meta] Results of Drupalcon Austin&#8217;s Consensus Banana](https://www.drupal.org/node/2289511): At DrupalCon Austin (2014) the need for a new core theme came up.</li>
+</ul>
+
+<h3 id="bartik">Bartik</h3>
+
+<p><em>Bartik</em> was introduced in Drupal 7 as a new, clean and simple theme. The theme has some new cool features in Drupal 8 and is also completely responsive. </p>
+
+<figure>
+<img src="https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/bartik.png" alt="Bartik screenshot" />
+<figcaption>Bartik screenshot</figcaption></figure>
+
+
+
+<h3 id="seven">Seven</h3>
+
+<p><em>Seven</em> was also introduced in Drupal 7. It is the default administrative theme. The theme was created to improve the Drupal 7 user experience.</p>
+
+<blockquote>
+<p>For Drupal 8, <a href="https://groups.drupal.org/node/283223">a style guide for Seven</a> was introduced.</p>
+
+<p>A sad thing about the style guide was that the font (Source Sans) could not make it into core <a href="https://www.drupal.org/node/1986082">due to licence issues</a>. The default font family used in the Seven (and Bartik theme) is <strong>Lucida Grande</strong>. Sadly the style guide never got an update. The licensing issue is still a thing. If you want to get involved, jump over to <a href="https://www.drupal.org/node/2010902">https://www.drupal.org/node/2010902</a></p>
+</blockquote>
+
+<figure>
+<img src="https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/seven.png" alt="Seven screenshot" />
+<figcaption>Seven screenshot</figcaption></figure>
+
+
+
+<h3 id="stark">Stark</h3>
+
+<p><em>Stark</em> is core theme that demonstrates Drupal&#8217;s default markup. It does not contain any template files, so it outputs the layout that come straight out of other (core) modules. This is of course very useful for a developer:
+- you can code against Stark when writing CSS for modules
+- as a theme developer, you can check against Stark, to see if a layout issue comes from the theme or another module.</p>
+
+<figure>
+<img src="https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/stark.png" alt="Stark screenshot" />
+<figcaption>Stark screenshot</figcaption></figure>
+
+
+
+<h3 id="classy">Classy</h3>
+
+<p>At DrupalCon Austin (2014) the need for a new core theme came up. Here&#8217;s a brief overview of the meta issue:</p>
+
+<blockquote>
+<p><em>Create a new core theme (code name &#8220;classy&#8221;) that contains a copy of the all current core template files; this is for the &#8220;sensible 2/3&#8221; camp. And then modify all of the core/modules template files to contain minimal classes (only those needed for functionality); this would be for the &#8220;clean 1/3&#8221; camp. To ensure that Seven and Bartik continue to function properly, they should use &#8220;classy&#8221; as their base theme.</em></p>
+</blockquote>
+
+<p>Classy will be a <code>base theme</code> which <em>Bartik</em> and <em>Seven</em> will extend from.</p>
+
+<h3 id="codingstandards">Coding standards</h3>
+
+<p>It&#8217;s important to know and follow the Drupal coding standards, especially when you want to get involved into Drupal core (theme) development. Yet, it&#8217;s might be useful as well to follow these standards in your own projects.</p>
+
+<p>There are coding standards for css, javascript and the new Twig template engine:</p>
+
+<ul>
+<li><a href="https://www.drupal.org/node/1886770">CSS Coding standards</a>.</li>
+<li><a href="https://www.drupal.org/node/172169">Javascript Coding standards</a>.</li>
+<li><a href="https://www.drupal.org/node/1823416">Twig Coding standards</a>.</li>
+</ul>
+
+<h2 id="themeengines">Theme engines</h2>
+
+<p>Inside the <code>core/themes</code> lives a fourth folder (besides <code>bartik</code>, <code>seven</code> and <code>stark</code>), called <code>engines</code>. This folder contains the theme engines. In Drupal 8, the default template engine is <strong>Twig</strong>. The default template engine from Drupal 7, PHPTemplate, does still exist. Although it&#8217;s not recommended to continue using the engine, it might be useful when you&#8217;re migrating your Drupal 7 site to Drupal 8. </p>
+
+<h3 id="whatisathemeengine">What is a theme engine?</h3>
+
+<p>A theme engines (template engine, template processor or template parser) is a software components that <strong>combines data with templates</strong> from themes and shows the result - the final HTML - to the user.</p>
+
+<figure>
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TempEngGen015.svg/440px-TempEngGen015.svg.png" alt="Template Engine image from Wikipedia" />
+<figcaption>Template Engine image from Wikipedia</figcaption></figure>
+
+
+
+<h3 id="twig">Twig</h3>
+
+<p>Twig is a modern template engine for PHP. All of the <code>theme_*</code> functions and PHPTemplate based <code>*.tpl.php</code> files have been completely replace in Drupal 8 by Twig template files. The template files now have a new (Twig) extension, <code>*.html.twig</code>.</p>
+
+<p><a href="https://www.drupal.org/node/1831138">This is the official change record</a>.</p>
+
+<h4 id="advantages">Advantages</h4>
+
+<ul>
+<li><p>Twig is more secure, due to the fact that only a number of tags can be used. In the previous PHPTemplate, it was possible for a template file to execute the following code:</p>
+
+<pre><code>&lt;?php
+  db_query('DROP TABLE {users}');
+?&gt;
+</code></pre></li>
+</ul>
+
+<p>This should of course not be the case. In case you&#8217;re wondering what it does: it removes the entire <code>users</code> table from your database. Not good, right?</p>
+
+<ul>
+<li>There now is a clear separation between the <em>logic</em> and the <em>view</em>. This means: no more PHP code inside your template files.</li>
+<li>The syntax is very easy to understand, making the code more readable as well. Also, many IDE&#8217;s have syntax highlighting for <code>*.twig</code> files.</li>
+<li>Template files are reusable, thanks to <a href="http://twig.sensiolabs.org/doc/tags/include.html">Twig includes</a>.</li>
+<li>Debugging is much more easy. First of all, Twig outputs a helpful message with the filename and the line number whenever there is a syntax problem within a template. Secondly, you can turn on a Twig debug function. More on that later.</li>
+<li>Twig is very well documented. Go ahead and <a href="http://twig.sensiolabs.org/documentation">start reading the official documentation here</a>.</li>
+<li>It&#8217;s not only used in Drupal core, so it&#8217;s no a Drupaly-thing.</li>
+</ul>
+
+<h4 id="disadvantage">Disadvantage</h4>
+
+<ul>
+<li>Although the syntax is very easy to read and understand, it&#8217;s a new syntax you have to learn before getting started.</li>
+</ul>
+
+<h2 id="thethemesdirectory">The themes directory</h2>
+
+<p>All right. Now is the time to get really excited. We&#8217;re about to create a Drupal 8 theme! The question that raises is: where should this theme be located, where should I put the files?</p>
+
+<blockquote>
+<p>If you&#8217;re familiar with Drupal 7 theming, the first place for you to look at would be <code>drupal/sites/all/themes/{custom/}</code> (the place where all your custom themes lived in Drupal 7).</p>
+</blockquote>
+
+<p>In Drupal 8, this location has changed. Custom and contrib themes now live in <code>drupal/themes</code>. Also notice that (custom and contrib) modules now live inside <code>drupal/modules</code> (instead of drupal/sites/all/modules/).</p>
+
+<blockquote>
+<p>Did you notice {<em>custom</em>}? It&#8217;s always a good practice to separate the contrib themes (the one&#8217;s you&#8217;ve been downloading from d.o) and the ones you&#8217;ve written yourself. This can simply be done by creating two folders inside the <code>themes</code> directory:</p>
+
+<p><code>contrib</code>: for contrib themes<br/>
+<code>custom</code>: for custom themes</p>
+</blockquote>
+
+<h3 id="createyourcustomthemedirectory">Create your custom theme directory</h3>
+
+<p>Let&#8217;s create an <code>example</code> directory inside <code>themes/custom</code>, resulting in <code>themes/custom/example</code>. Inside this directory, all the code for our custom theme will live. </p>
+
+<h2 id="creatinganinfofile">Creating an info file</h2>
+
+<h3 id="asimple.info.ymlfile">A simple .info.yml file</h3>
+
+<p>Again, if you&#8217;re familiar with Drupal 7 theming, your first idea might be to start with creating an <code>.info</code> file. In Drupal 8, <code>.info</code> files are replaced by <code>.info.yml</code> files (<a href="https://www.drupal.org/node/1935708">read the change record</a>). These files are parsed using the Symphony YAML Component. This change also applies for modules and installation profiles. They both require a <code>.info.yml</code> now, instead of the old <code>.info</code> file. Once you&#8217;ve created the file, it&#8217;s time to add the write the first line of code.</p>
+
+<pre><code>name: Awesome Theme
+</code></pre>
+
+<p>Fairly simple. This is the name of your theme. It&#8217;s the name that also appears on the <em>Appearance</em> page, where you can activate your theme.</p>
+
+<pre><code>description: 'An awesome D8 theme.'
+</code></pre>
+
+<p>A theme description. This description is also displayed on the <em>Appearance</em> page.</p>
+
+<pre><code>package: Custom
+</code></pre>
+
+<p>The package in which your theme lives.</p>
+
+<pre><code>type: theme
+</code></pre>
+
+<p>Since the <code>info.yml</code> files are used for besides themes also used for modules and profiles, this line lets Drupal know what it&#8217;s dealing with.</p>
+
+<pre><code>version: 1.0
+</code></pre>
+
+<p>The version of your theme. </p>
+
+<pre><code>core: 8.x
+</code></pre>
+
+<p>The version of Drupal core the theme requires. </p>
+
+<h5 id="info.yml">*.info.yml</h5>
+
+<p>To wrap things up, this is our <code>.info.yml</code> file so far:</p>
+
+<pre><code>name: Awesome Theme
+description: 'An awesome D8 theme.'
+package: Custom
+type: theme
+version: 1.0
+core: 8.x
+</code></pre>
+
+<p>Save this as <code>{theme_name}.info.yml</code> inside the created custom theme directory (eg. <code>themes/custom/example/example.info.yml</code>). Now navigate to <code>admin/appearance</code> and see your theme displayed. You can now even enable the theme. Hooray!</p>
+
+<h4 id="addingascreenshot">Adding a screenshot</h4>
+
+<p>When navigation to the appearance page, you might notice a <em>no screenshot</em> image for our theme. This is because no screenshot has been found (duh!). A screenshot is automatically detected and displayed if the filename is <code>screenshot.png</code>. If we add this file, we would see the screenshot on the appearance page.</p>
+
+<p>Otherwise you can manually add a screenshot with the following line:</p>
+
+<pre><code>screenshot: otherfilename.png
+</code></pre>
+
+<p>So, the filename for a screenshot does not have to be <code>screenshot.png</code>, as long as it is defined in the <em>info.yml</em> file.</p>
+
+<h4 id="addingstylesheets">Adding stylesheets</h4>
+
+<p>It&#8217;s of course important to know how to add stylesheets to your theme. Let&#8217;s add a css file called <code>styles.css</code> (that lives inside the <code>css</code> directory: <code>/css/styles.css</code>) to our theme.</p>
+
+<pre><code># Adding styles.css to our theme.
+stylesheets:
+    all:
+        - css/styles.css
+</code></pre>
+
+<blockquote>
+<p>In Drupal 7, this could be achieved by adding the following line: </p>
+</blockquote>
+
+<pre><code>stylesheets[all][] = css/style.css
+</code></pre>
+
+<p>The css file is now added. The <code>all</code> keyword stands for the media tag inside the html <code>link</code> element that is used to add stylesheets:</p>
+
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;[stylesheet]&quot; media=&quot;all&quot; /&gt;
+</code></pre>
+
+<p>So &#8230; now that you know this, it&#8217;s very easy to add a print stylesheet to our theme as well:</p>
+
+<pre><code># Adding a print stylesheet to our theme.
+stylesheets:
+    print:
+        - css/print.css
+</code></pre>
+
+<p>Inside the html:</p>
+
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;[stylesheet]&quot; media=&quot;print&quot; /&gt;
+</code></pre>
+
+<h4 id="overridingstylesheets">Overriding stylesheets</h4>
+
+<p>In Drupal 8, drupal.base.css has been replaced with normalize.css (<a href="https://www.drupal.org/node/2168417">see this change record</a>). If you want to include a different version of normalize.css, you can override this file:</p>
+
+<pre><code># Remove a CSS file:​
+stylesheets-override:
+    - normalize.css
+</code></pre>
+
+<h4 id="removingstylesheets">Removing stylesheets</h4>
+
+<p>Alternatively, we can also completely remove this css file. </p>
+
+<pre><code># Remove a CSS file:​
+stylesheets-remove:
+    - normalize.css         
+</code></pre>
+
+<h4 id="regions">Regions</h4>
+
+<p>Regions can be defined using the <code>regions</code> tag. Here is an example where 3 regions are defined: a <em>header</em>, a <em>content</em> and a <em>footer</em> region:</p>
+
+<pre><code># Regions
+regions:
+    header: 'Header'
+    content: 'Content'
+    footer: 'Footer'
+</code></pre>
+
+<h3 id="librariesandscripts">Libraries and Scripts</h3>
+
+<blockquote>
+<p>Drupal 8 doesn&#8217;t load any additional scripts. This also means that by default <a href="https://www.drupal.org/node/1541860">jQuery is not included</a>. You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using <code>hook_library_info</code>. Since this was one of the last remaining hooks in Drupal 8, it was <a href="https://www.drupal.org/node/2201089">replaced by a <code>*.libraries.yml</code> file</a>.</p>
+</blockquote>
+
+<p>Let&#8217;s add a custom script to our theme. The script is location in the <code>js</code> folder inside our theme (<code>/js/custom-script.js</code>). Next, create a <code>*.libraries.yml</code> file. Let&#8217;s call this <code>{theme}.libraries.yml</code>:</p>
+
+<pre><code>base:
+  version: 1.x
+  js:
+    js/custom-script.js: {}
+  dependencies:
+    - core/jquery
+</code></pre>
+
+<p>Back in our <code>{theme}.info.yml</code> file, we add the following lines:</p>
+
+<pre><code>libraries:
+    - example/base
+</code></pre>
+
+<p>This includes our &#8220;libraries&#8221; (the custom javascript) and the dependencies into our theme. In this example, the custom script as well as the jQuery library are now included in our theme. </p>
+
+<p>There still is a huge bug: <a href="https://www.drupal.org/node/2273769">https://www.drupal.org/node/2273769</a>.</p>
+
+<h2 id="breakpoints">Breakpoints</h2>
+
+<figure>
+<img src="https://www.drupal.org/files/project-images/breakpoints_group.png" alt="https://www.drupal.org/files/project-images/breakpoints_group.png" />
+<figcaption>https://www.drupal.org/files/project-images/breakpoints_group.png</figcaption></figure>
+
+
+
+<ul>
+<li><a href="https://www.drupal.org/node/1813914">Breakpoint added to Drupal 8</a></li>
+</ul>
+
+<blockquote>
+<p>The Breakpoints module keeps track of the height, width, and resolution breakpoints where a responsive design needs to change in order to respond to different devices being used to view the site. The Breakpoints module standardises the use of breakpoints, and enables modules and themes to expose or use each others&#8217; breakpoints.</p>
+</blockquote>
+
+<p>Both themes and modules can define breakpoints by creating a configuration file called <code>{name}.breakpoints.yml</code> where <code>{name}</code> is the name of your theme or module. </p>
+
+<p>To get a good example, let look at <code>bartik.breakpoints.yml</code>:</p>
+
+<pre><code>bartik.mobile:
+  label: mobile
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+    - 1x
+bartik.narrow:
+  label: narrow
+  mediaQuery: 'all and (min-width: 560px) and (max-width: 850px)'
+  weight: 1
+  multipliers:
+    - 1x
+bartik.wide:
+  label: wide
+  mediaQuery: 'all and (min-width: 851px)'
+  weight: 2
+  multipliers:
+    - 1x 
+</code></pre>
+
+<p>[@todo]</p>
+
+<h2 id="templatefilestwig">Template files (Twig)</h2>
+
+<p>Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a &#8216;compiled&#8217; PHP template which it stores in a protected directory in sites/default/files/php_storage/&#8230; The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.</p>
+
+<h3 id="templatesfolder">/templates folder</h3>
+
+<p>[@todo:] Document the new folder, that contains all the templates files instead of all the <code>theme_</code>-functions.</p>
+
+<p>[@todo]</p>
+
+<h3 id="twigdebug">Twig debug</h3>
+
+<p>An <strong>awesome</strong> new feature from the Twig engine is the debug tool. It allows you to trace where the template comes from. To enable Twig Debugging, all you have to do is set the <code>debug</code> variable in the <code>twig.config</code> to <code>true</code>. Navigate to <code>sites/default/services.yml</code> to change the it:</p>
+
+<pre><code>parameters:
+    twig.config:
+        debug: false
+</code></pre>
+
+<p>[@todo] </p>
+
+<h3 id="page.html.twig">page.html.twig</h3>
+
+<p>[@todo:] Document this template file.</p>
+
+<h2 id="headlessdrupal">Headless Drupal</h2>
+
+<p>A new trend, you might have heard by new, is <strong>headless Drupal</strong>.</p>
+
+<p>[@todo]</p>
+    </div>
+</body>
+</html>
