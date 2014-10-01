@@ -21,6 +21,7 @@ Recently, I've added some example code in the repo to get you started. The examp
 
 > Get Twiggy with it!
 
+
 ## Introduction
 
 Drupal 8 is going to be a huge change for the entire community. In order to get front-end developers ready for Drupal 8, I started this theming guide. It contains an overview of how you can build a Drupal 8 theme, using modern front-end tools. If you find any mistakes or outdated documentation, feel free to add a pull request.
@@ -104,6 +105,8 @@ At DrupalCon Austin (2014) the need for a new core theme came up. Here's a brief
 > *Create a new core theme (code name "classy") that contains a copy of the all current core template files; this is for the "sensible 2/3" camp. And then modify all of the core/modules template files to contain minimal classes (only those needed for functionality); this would be for the "clean 1/3" camp. To ensure that Seven and Bartik continue to function properly, they should use "classy" as their base theme.*
 
 Classy will be a `base theme` which *Bartik* and *Seven* will extend from.
+
+[@todo]: Link to classy node where the classy.info.yml is assigned to Dries.
 
 ### Coding standards
 
@@ -256,7 +259,7 @@ Inside the html:
 	
 #### Overriding stylesheets
 
-In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this change record](https://www.drupal.org/node/2168417)). If you want to include a different version of normalize.css, you can override this file:
+In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this change record](https://www.drupal.org/node/2168417)). Say for example, you want to include a different version of normalize.css, you can override this file.
 
     # Remove a CSS file:​
     stylesheets-override:
@@ -264,7 +267,7 @@ In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this cha
  
 #### Removing stylesheets
 
-Alternatively, we can also completely remove this css file. 
+Alternatively, we can also completely remove a css file.
 
     # Remove a CSS file:​
     stylesheets-remove:
@@ -279,6 +282,13 @@ Regions can be defined using the `regions` tag. Here is an example where 3 regio
 		header: 'Header'
 		content: 'Content'
 		footer: 'Footer'
+		
+#### Regions hidden
+
+The `regions_hidden` can be applied to any previous defined *regions*. Regions with this attribute will not show up on the block administration page. This means they can't have blocks assigned to them by ordinary mechanisms. For example, Drupal uses this feature to protect the special 'page_top' and 'page_bottom' regions from adventurous themers. This can be used by module writers and theme writers to protect a given region from having unexpected content inserted into the output. The `seven.info.yml` contains this tag, in order to *hide* the 'Sidebar First' region.
+
+	regions_hidden:
+  	  - sidebar_first
 
 ## Javascript
 
@@ -372,6 +382,10 @@ To get a good example, let look at `bartik.breakpoints.yml`:
 
 [@todo]
 
+## Image styles
+
+[@todo] Installing image styles directly with your theme using CMI.
+
 ## Template files (Twig)
 
 Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a 'compiled' PHP template which it stores in a protected directory in sites/default/files/php_storage/... The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.
@@ -390,7 +404,20 @@ An **awesome** new feature from the Twig engine is the debug tool. It allows you
   		twig.config:
     		debug: false
     		
-[@todo]    		
+[@todo:]
+- How to find the active template
+- Overriding template
+- Debug array. 
+- Escaping user data, using twig | escape (filter)   
+- Using filters in Twig.
+
+### Find and override a template
+
+### Twig blocks
+
+- Part of a template, you can modify on; extending twig template files.
+
+[@todo]
 
 ### page.html.twig
 
@@ -402,3 +429,4 @@ An **awesome** new feature from the Twig engine is the debug tool. It allows you
 A new trend, you might have heard by new, is **headless Drupal**.
 
 [@todo]
+
