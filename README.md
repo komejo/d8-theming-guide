@@ -184,7 +184,7 @@ Fairly simple. This is the name of your theme. It's the name that also appears o
 	
 	description: 'An awesome D8 theme.'
 
-A theme description. This description is also displayed on the *Appearance* page.
+A theme description. This description is also displayed on the *Appearance* page. For the core themes, this package is of course `core`.
 
 	package: Custom
 	
@@ -196,7 +196,7 @@ Since the `info.yml` files are used for besides themes also used for modules and
 	
 	version: 1.0
 
-The version of your theme. 	
+The version of the theme. 	
 	
 	core: 8.x
 	
@@ -227,7 +227,7 @@ If everything went well, you should be able to see the screenshot:
 
 ![https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/awesome_theme_screenshot.png](https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/awesome_theme_screenshot.png)
 	
-So, the filename for a screenshot does not have to be `screenshot.png`, as long as it is defined in the *info.yml* file.
+Conclusion: the filename for a screenshot does not have to be `screenshot.png`, as long as it is defined in the *info.yml* file.
 
 #### Adding stylesheets
 
@@ -259,7 +259,7 @@ Inside the html:
 	
 #### Overriding stylesheets
 
-In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this change record](https://www.drupal.org/node/2168417)). Say for example, you want to include a different version of normalize.css, you can override this file.
+In Drupal 8, drupal.base.css has been replaced with normalize.css ([see this change record](https://www.drupal.org/node/2168417)). If you want to include a different version of normalize.css, you can override this file.
 
     # Remove a CSS file:​
     stylesheets-override:
@@ -289,12 +289,14 @@ The `regions_hidden` can be applied to any previous defined *regions*. Regions w
 
 	regions_hidden:
   	  - sidebar_first
-
+  	  
 ## Javascript
 
 ### Libraries and Scripts
 
-> Drupal 8 doesn't load any additional scripts. This also means that by default a library like [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it got [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
+Drupal 8 doesn't load any additional scripts. This also means that by default a library like [jQuery is not included](https://www.drupal.org/node/1541860). You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using `hook_library_info`. Since this was one of the last remaining hooks in Drupal 8, it got [replaced by a `*.libraries.yml` file](https://www.drupal.org/node/2201089).
+
+> Since Drupal 8 does not support IE8 and below, and because Javacript has evolved, [you might not need jQuery](http://youmightnotneedjquery.com/). If hovever you do want to use jQuery, make sure to look up some of the [best practices](http://lab.abhinayrathore.com/jquery-standards/) for using jQuery.
 
 Let's add some custom javascript to our theme. Our script will location in the `js` folder inside our theme (`/js/custom-script.js`). Next, we create a `*.libraries.yml` file. Let's call this `awesome.libraries.yml` (`{theme-or-module-name}`.libraries.yml) and save it into the root of our theme. 
 	
@@ -386,15 +388,21 @@ To get a good example, let look at `bartik.breakpoints.yml`:
 
 [@todo] Installing image styles directly with your theme using CMI.
 
+## Theme functions
+
+This section is dedicated to all people who have been dealing with `theme`-functions in Drupal 7. All of the `theme`-function are gone and have been replaced with template files. The next section goes into detail about how you can modify and override them. It also handles how you can complety control all the classes add to the layout. 
+
+![Mions celebrating]()
+
 ## Template files (Twig)
 
 Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a 'compiled' PHP template which it stores in a protected directory in sites/default/files/php_storage/... The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.
 
 ### /templates folder
 
-[@todo:] Document the new folder, that contains all the templates files instead of all the `theme_`-functions.
+The `theme`-functions are gone. Almost all the core themes (and modules) now contain a new folder called `templates`. In this folder, the Twig template files are stored.
 
-[@todo]
+[@todo:] Document the new folder, that contains all the templates files instead of all the `theme_`-functions. 
 
 ### Twig debug
 
@@ -429,4 +437,3 @@ An **awesome** new feature from the Twig engine is the debug tool. It allows you
 A new trend, you might have heard by new, is **headless Drupal**.
 
 [@todo]
-

@@ -80,7 +80,7 @@ This is important because in a default Drupal 8 installation, CSS and JS aggrega
 Twig is a completely new theme/template system. This means the <code>theme_*</code> functions and PHP-based <code>*.tpl.php</code> files have been completely replace in D8.</p></li>
 <li><p><a href="https://www.drupal.org/node/2298227">Drupal 8 does not support browsers that do not support SVG</a>
 Drupal 8 uses SVG in place of PNG to provide resolution independent icons in the admin UI. No effort is made to cater for browsers that do not support SVG. This includes IE8 and below and Android Browser 2.3 and below.</p></li>
-<li><p>Due to the fact that these older browsers are no longer supported, the css in Drupal core is able to more a big step forward. Instead of adding classes like odd, even, first and last; we are now able to use pseudo selectors. <a href="https://www.drupal.org/node/2178215">Most first/last/odd/even classes removed in favor of CSS3 pseudo selectors</a></p></li>
+<li><p>Due to the fact that these older browsers are no longer supported, the css in Drupal core is able to move a big step forward. Instead of adding classes like odd, even, first and last; we are now able to use pseudo selectors. <a href="https://www.drupal.org/node/2178215">Most first/last/odd/even classes removed in favor of CSS3 pseudo selectors</a></p></li>
 <li><p><a href="https://www.drupal.org/node/2289511">An new, empty core theme</a>
 Read more on <em>classy</em>, a new core theme below. </p></li>
 <li><p><a href="https://www.drupal.org/node/2325067">CSS classes being moved from preprocess to Twig templates</a>.</p></li>
@@ -155,6 +155,8 @@ Read more on <em>classy</em>, a new core theme below. </p></li>
 </blockquote>
 
 <p>Classy will be a <code>base theme</code> which <em>Bartik</em> and <em>Seven</em> will extend from.</p>
+
+<p>[@todo]: Link to classy node where the classy.info.yml is assigned to Dries.</p>
 
 <h3 id="codingstandards">Coding standards</h3>
 
@@ -251,7 +253,7 @@ Read more on <em>classy</em>, a new core theme below. </p></li>
 <pre><code>description: 'An awesome D8 theme.'
 </code></pre>
 
-<p>A theme description. This description is also displayed on the <em>Appearance</em> page.</p>
+<p>A theme description. This description is also displayed on the <em>Appearance</em> page. For the core themes, this package is of course <code>core</code>.</p>
 
 <pre><code>package: Custom
 </code></pre>
@@ -266,7 +268,7 @@ Read more on <em>classy</em>, a new core theme below. </p></li>
 <pre><code>version: 1.0
 </code></pre>
 
-<p>The version of your theme. </p>
+<p>The version of the theme. </p>
 
 <pre><code>core: 8.x
 </code></pre>
@@ -296,7 +298,15 @@ core: 8.x
 <pre><code>screenshot: otherfilename.png
 </code></pre>
 
-<p>So, the filename for a screenshot does not have to be <code>screenshot.png</code>, as long as it is defined in the <em>info.yml</em> file.</p>
+<p>If everything went well, you should be able to see the screenshot:</p>
+
+<figure>
+<img src="https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/awesome_theme_screenshot.png" alt="https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/awesome_theme_screenshot.png" />
+<figcaption>https://raw.githubusercontent.com/sqndr/d8-theming-guide/master/img/awesome_theme_screenshot.png</figcaption></figure>
+
+
+
+<p>Conclusion: the filename for a screenshot does not have to be <code>screenshot.png</code>, as long as it is defined in the <em>info.yml</em> file.</p>
 
 <h4 id="addingstylesheets">Adding stylesheets</h4>
 
@@ -335,7 +345,7 @@ stylesheets:
 
 <h4 id="overridingstylesheets">Overriding stylesheets</h4>
 
-<p>In Drupal 8, drupal.base.css has been replaced with normalize.css (<a href="https://www.drupal.org/node/2168417">see this change record</a>). If you want to include a different version of normalize.css, you can override this file:</p>
+<p>In Drupal 8, drupal.base.css has been replaced with normalize.css (<a href="https://www.drupal.org/node/2168417">see this change record</a>). If you want to include a different version of normalize.css, you can override this file.</p>
 
 <pre><code># Remove a CSS file:​
 stylesheets-override:
@@ -344,7 +354,7 @@ stylesheets-override:
 
 <h4 id="removingstylesheets">Removing stylesheets</h4>
 
-<p>Alternatively, we can also completely remove this css file. </p>
+<p>Alternatively, we can also completely remove a css file.</p>
 
 <pre><code># Remove a CSS file:​
 stylesheets-remove:
@@ -362,13 +372,25 @@ regions:
     footer: 'Footer'
 </code></pre>
 
+<h4 id="regionshidden">Regions hidden</h4>
+
+<p>The <code>regions_hidden</code> can be applied to any previous defined <em>regions</em>. Regions with this attribute will not show up on the block administration page. This means they can&#8217;t have blocks assigned to them by ordinary mechanisms. For example, Drupal uses this feature to protect the special &#8216;page_top&#8217; and &#8216;page_bottom&#8217; regions from adventurous themers. This can be used by module writers and theme writers to protect a given region from having unexpected content inserted into the output. The <code>seven.info.yml</code> contains this tag, in order to <em>hide</em> the &#8216;Sidebar First&#8217; region.</p>
+
+<pre><code>regions_hidden:
+  - sidebar_first
+</code></pre>
+
+<h2 id="javascript">Javascript</h2>
+
 <h3 id="librariesandscripts">Libraries and Scripts</h3>
 
-<blockquote>
 <p>Drupal 8 doesn&#8217;t load any additional scripts. This also means that by default a library like <a href="https://www.drupal.org/node/1541860">jQuery is not included</a>. You have to declare it as a dependency for your script in order to use it. In the early stages of Drupal 8, this was done using <code>hook_library_info</code>. Since this was one of the last remaining hooks in Drupal 8, it got <a href="https://www.drupal.org/node/2201089">replaced by a <code>*.libraries.yml</code> file</a>.</p>
+
+<blockquote>
+<p>Since Drupal 8 does not support IE8 and below, and because Javacript has evolved, <a href="http://youmightnotneedjquery.com/">you might not need jQuery</a>. If hovever you do want to use jQuery, make sure to look up some of the <a href="http://lab.abhinayrathore.com/jquery-standards/">best practices</a> for using jQuery.</p>
 </blockquote>
 
-<p>Let&#8217;s add some custom javascript to our theme. Our script will location in the <code>js</code> folder inside our theme (<code>/js/custom-script.js</code>). Next, we create a <code>*.libraries.yml</code> file. Let&#8217;s call this <code>awesome.libraries.yml</code> ({theme_name}.libraries.yml) and save it into the root of our theme (). </p>
+<p>Let&#8217;s add some custom javascript to our theme. Our script will location in the <code>js</code> folder inside our theme (<code>/js/custom-script.js</code>). Next, we create a <code>*.libraries.yml</code> file. Let&#8217;s call this <code>awesome.libraries.yml</code> (<code>{theme-or-module-name}</code>.libraries.yml) and save it into the root of our theme. </p>
 
 <pre><code>base:
   version: 1.x
@@ -392,7 +414,7 @@ regions:
   &quot;use strict&quot;
     Drupal.behaviors.mymodule = {
       attach: function (context, settings) {
-        $('main').append('&lt;p&gt;Hello world&lt;/p&gt;');
+        $('main').once('awesome').append('&lt;p&gt;Hello world&lt;/p&gt;');
       }
     };
 }(jQuery));
@@ -400,9 +422,9 @@ regions:
 
 <p>Let&#8217;s have a quick look at what this does.</p>
 
-<p>The behavior has to have a unique namespace. In the example; the namespace is <code>awesome</code> (part of <code>Drupal.behaviors.awesome</code>). The <code>context</code> variable is the part of the page for which this applies. The <code>settings</code> variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a <code>p</code>aragraph-tag, with the text <em>Hello world</em>, and appends it to the <code>main</code>tag.</p>
+<p>The behavior has to have a unique namespace. In the example; the namespace is <code>awesome</code> (part of <code>Drupal.behaviors.awesome</code>). The <code>context</code> variable is the part of the page for which this applies. The <code>settings</code> variable is used to pass information from the PHP code to the javascript. Next is some custom code that creates a <code>p</code>aragraph-tag, with the text <em>Hello world</em>, and appends it to the <code>main</code>tag. Using the <code>.once(awesome)</code> will make sure the code only runs once. It adds a <code>processed</code>- class to the <code>main</code> tag (<code>&lt;main role=&quot;main&quot; class=&quot;awesome-processed&quot;&gt;</code>) in order to accomplish this.</p>
 
-<h4 id="file-closure">File-closure</h4>
+<h3 id="file-closure">File-closure</h3>
 
 <p>All of the javascript code <strong>must</strong> be declared inside a closure wrapping the whole file. This closure <strong>must</strong> be in strict mode (see below).</p>
 
@@ -412,11 +434,11 @@ regions:
 })();
 </code></pre>
 
-<h4 id="usescrict">&#8220;use scrict&#8221;</h4>
+<h3 id="usescrict">&#8220;use scrict&#8221;</h3>
 
 <p>The <code>&quot;use strict&quot;</code> directive is new in JavaScript 1.8.5 and ignored by previous versions of javascript. The purpose of <code>&quot;use strict&quot;</code> is to indicate that the code should be executed in &#8220;strict mode&#8221;. As an example, in <em>scrict mode</em>, you cannot use undeclared variables.</p>
 
-<h4 id="eshint">ESHint</h4>
+<h3 id="eshint">ESHint</h3>
 
 <blockquote>
 <p>As of Drupal 8, we use ESLint to make sure our JavaScript code is consistent and free from syntax error and leaking variables and that it can be properly minified.</p>
@@ -466,15 +488,29 @@ bartik.wide:
 
 <p>[@todo]</p>
 
+<h2 id="imagestyles">Image styles</h2>
+
+<p>[@todo] Installing image styles directly with your theme using CMI.</p>
+
+<h2 id="themefunctions">Theme functions</h2>
+
+<p>This section is dedicated to all people who have been dealing with <code>theme</code>-functions in Drupal 7. All of the <code>theme</code>-function are gone and have been replaced with template files. The next section goes into detail about how you can modify and override them. It also handles how you can complety control all the classes add to the layout. </p>
+
+<figure>
+<img src="" alt="Mions celebrating" />
+<figcaption>Mions celebrating</figcaption></figure>
+
+
+
 <h2 id="templatefilestwig">Template files (Twig)</h2>
 
 <p>Twig is a PHP-based compiled templating language. When your web page renders, the Twig engine takes the template and converts it into a &#8216;compiled&#8217; PHP template which it stores in a protected directory in sites/default/files/php_storage/&#8230; The compilation is done once. Template files are cached for reuse and are recompiled on clearing the Twig cache.</p>
 
 <h3 id="templatesfolder">/templates folder</h3>
 
-<p>[@todo:] Document the new folder, that contains all the templates files instead of all the <code>theme_</code>-functions.</p>
+<p>The <code>theme</code>-functions are gone. Almost all the core themes (and modules) now contain a new folder called <code>templates</code>. In this folder, the Twig template files are stored.</p>
 
-<p>[@todo]</p>
+<p>[@todo:] Document the new folder, that contains all the templates files instead of all the <code>theme_</code>-functions. </p>
 
 <h3 id="twigdebug">Twig debug</h3>
 
@@ -485,7 +521,22 @@ bartik.wide:
         debug: false
 </code></pre>
 
-<p>[@todo] </p>
+<p>[@todo:]
+- How to find the active template
+- Overriding template
+- Debug array.
+- Escaping user data, using twig | escape (filter)<br/>
+- Using filters in Twig.</p>
+
+<h3 id="findandoverrideatemplate">Find and override a template</h3>
+
+<h3 id="twigblocks">Twig blocks</h3>
+
+<ul>
+<li>Part of a template, you can modify on; extending twig template files.</li>
+</ul>
+
+<p>[@todo]</p>
 
 <h3 id="page.html.twig">page.html.twig</h3>
 
