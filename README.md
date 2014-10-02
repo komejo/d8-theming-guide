@@ -106,7 +106,7 @@ At DrupalCon Austin (2014) the need for a new core theme came up. Here's a brief
 
 Classy will be a `base theme` which *Bartik* and *Seven* will extend from.
 
-[@todo]: Link to classy node where the classy.info.yml is assigned to Dries.
+[Add classy.info.yml to core, set Classy as base theme for Bartik and Seven](https://www.drupal.org/node/2329501)
 
 ### Coding standards
 
@@ -117,6 +117,19 @@ There are coding standards for css, javascript and the new Twig template engine:
 - [CSS Coding standards](https://www.drupal.org/node/1886770).
 - [Javascript Coding standards](https://www.drupal.org/node/172169).
 - [Twig Coding standards](https://www.drupal.org/node/1823416).
+
+#### SMACSS
+
+Drupal 8 uses the **SMACSS** system to conceptually categorize CSS rules.
+
+1. Base
+2. Layout
+3. Component - *SMACSS: modules*
+4. State
+5. Theme
+
+#### BEM
+
 
 ## Theme engines
 
