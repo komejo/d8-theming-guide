@@ -108,6 +108,8 @@ Classy will be a `base theme` which *Bartik* and *Seven* will extend from.
 
 [Add classy.info.yml to core, set Classy as base theme for Bartik and Seven](https://www.drupal.org/node/2329501)
 
+As of 02/11/2014, **Classy** got commit to Drupal 8 core by Dries. The change record can be found [here](https://www.drupal.org/node/2337467). 
+
 ### Coding standards
 
 It's important to know and follow the Drupal coding standards, especially when you want to get involved into Drupal core (theme) development. Yet, it's might be useful as well to follow these standards in your own projects.
@@ -129,6 +131,10 @@ Drupal 8 uses the **SMACSS** system to conceptually categorize CSS rules.
 5. Theme
 
 #### BEM
+
+`block__element--modifier`
+
+
 
 
 ## Theme engines
