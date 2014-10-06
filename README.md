@@ -317,14 +317,16 @@ Drupal 8 doesn't load any additional scripts. This also means that by default a 
 
 > Since Drupal 8 does not support IE8 and below, and because Javacript has evolved, [you might not need jQuery](http://youmightnotneedjquery.com/). If hovever you do want to use jQuery, make sure to look up some of the [best practices](http://lab.abhinayrathore.com/jquery-standards/) for using jQuery.
 
-Let's add some custom javascript to our theme. Our script will location in the `js` folder inside our theme (`/js/custom-script.js`). Next, we create a `*.libraries.yml` file. Let's call this `awesome.libraries.yml` (`{theme-or-module-name}`.libraries.yml) and save it into the root of our theme. 
+Let's add some custom javascript to our theme. Our script will location in the `js` folder inside our theme (`/js/awesome.js`). Next, we create a `*.libraries.yml` file. Let's call this `awesome.libraries.yml` (`{theme-or-module-name}`.libraries.yml) and save it into the root of our theme. 
 	
 	base:
 	  version: 1.x
 	  js:
-	    js/custom-script.js: {}
+	    js/awesome.js: {}
 	  dependencies:
+	    - core/drupal
 	    - core/jquery
+	    - core/jquery.once
 	    
 Back in our `awesome.info.yml` file, we now add the following lines, to include our new *library* into our theme.
 
@@ -333,7 +335,7 @@ Back in our `awesome.info.yml` file, we now add the following lines, to include 
 
 This includes our the custom javascript and the dependencies into our theme. In this example, both the custom script and the jQuery library are now included in our theme.
 
-`Drupal.behaviors` are still part of javascript in core. Let's open the `custom-script.js` and add a little behavior.
+`Drupal.behaviors` are still part of javascript in core. Let's open the `awesome.js` and add a little behavior.
 
 	(function ($) {
   	  "use strict"
