@@ -3,4 +3,6 @@ base:
   js:
     js/awesome.js: {}
   dependencies:
+    - core/drupal
     - core/jquery
+    - core/jquery.once
